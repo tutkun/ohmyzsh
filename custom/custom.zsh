@@ -25,16 +25,15 @@ ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗
 
 # MY PLUGINS:
 plugins=(
-    asdf
-    git
-    alias-finder
-    colorize
-    command-not-found
-    compleat
-    common-aliases
-    themes
-    nextjs
-    # wp-cli
+    git 
+    alias-finder 
+    colorize 
+    command-not-found 
+    compleat 
+    common-aliases 
+    themes 
+    create-nextjs-app 
+    asdf 
 )
 
 # Android Studio için JAVA_HME tanımlaması:
