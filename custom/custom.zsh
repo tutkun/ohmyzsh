@@ -27,6 +27,7 @@ ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗
 plugins=(
     asdf
     git
+    alias-finder
     colorize
     command-not-found
     compleat
