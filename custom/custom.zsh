@@ -20,8 +20,8 @@ ZSH_THEME="suvash" # ╭─tutkun at MacBook-Pro in ~/.oh-my-zsh on master!
 ZSH_THEME="sunrise" # --- ~/.oh-my-zsh ‹master* ?› » 
 ZSH_THEME="norm" # λ MacBook-Pro .oh-my-zsh → λ git master* →
 ZSH_THEME="strug" # ╭─tutkun@MacBook-Pro in ~/.oh-my-zsh on master ✘ (origin/master -77)
-ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗ 
 ZSH_THEME="jnrowe" # Ξ ~/.oh-my-zsh git:(master) ▶ 
+ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗ 
 
 # MY PLUGINS:
 plugins=(
