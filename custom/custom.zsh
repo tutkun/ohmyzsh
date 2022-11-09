@@ -10,6 +10,15 @@
 #
 
 # USER CONFIGURATIONS:
+ZSH_THEME="agnoster" # arkaplanı renkli satır
+ZSH_THEME="amuse" # ~/path on  master! ⌚ 14:21:59
+ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master ☂ ✭
+ZSH_THEME="suvash" # ╭─tutkun at MacBook-Pro in ~/.oh-my-zsh on master!
+ZSH_THEME="sunrise" # --- ~/.oh-my-zsh ‹master* ?› » 
+ZSH_THEME="norm" # λ MacBook-Pro .oh-my-zsh → λ git master* →
+ZSH_THEME="strug" # ╭─tutkun@MacBook-Pro in ~/.oh-my-zsh on master ✘ (origin/master -77)
+ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗ 
+ZSH_THEME="jnrowe" # Ξ ~/.oh-my-zsh git:(master) ▶ 
 
 # Android Studio için JAVA_HME tanımlaması:
 # export JAVA_HOME="/usr/libexec/java_home"
