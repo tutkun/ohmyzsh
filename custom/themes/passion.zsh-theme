@@ -1,3 +1,5 @@
+# Put your custom themes in this folder.
+# Example:
 
 # gdate for macOS
 # REF: https://apple.stackexchange.com/questions/135742/time-in-milliseconds-since-epoch-in-the-terminal
