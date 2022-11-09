@@ -10,6 +10,9 @@
 #
 
 # USER CONFIGURATIONS:
+# ====================
+
+# MY THEMES:
 ZSH_THEME="agnoster" # arkaplanı renkli satır
 ZSH_THEME="amuse" # ~/path on  master! ⌚ 14:21:59
 ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master ☂ ✭
@@ -19,6 +22,19 @@ ZSH_THEME="norm" # λ MacBook-Pro .oh-my-zsh → λ git master* →
 ZSH_THEME="strug" # ╭─tutkun@MacBook-Pro in ~/.oh-my-zsh on master ✘ (origin/master -77)
 ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗ 
 ZSH_THEME="jnrowe" # Ξ ~/.oh-my-zsh git:(master) ▶ 
+
+# MY PLUGINS:
+plugins=(
+    asdf
+    git
+    colorize
+    command-not-found
+    compleat
+    common-aliases
+    themes
+    nextjs
+    # wp-cli
+)
 
 # Android Studio için JAVA_HME tanımlaması:
 # export JAVA_HOME="/usr/libexec/java_home"
@@ -41,4 +57,5 @@ export PATH="$PATH:/Applications/Code.app/Contents/Resources/app/bin"
 # flutter create --org com.newcompany --project-name newproject .
 alias flutter-new-app="flutter create --org com.tutkuns --project-name "
 
-# Helper Functions:
+# HELPER FUNCTIONS:
+# =================
