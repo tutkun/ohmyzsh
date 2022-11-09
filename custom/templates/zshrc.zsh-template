@@ -32,7 +32,7 @@ ZSH_THEME="passion" # set by `omz`
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "passion" "agnoster" "avit" "af-magic" "bira" "daveverwer" "mikeh" "robbyrussell" )
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -43,8 +43,8 @@ ZSH_THEME="passion" # set by `omz`
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-zstyle ':omz:update' mode auto  # update automatically without asking
 # zstyle ':omz:update' mode background-alpha  # arkaplanda otomatik güncelleme
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -66,7 +66,7 @@ zstyle ':omz:update' mode auto  # update automatically without asking
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="%F{yellow} bekleyin...%f"
+COMPLETION_WAITING_DOTS="%F{yellow} hazırlanıyor...%f"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -90,7 +90,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git gh brew
+  asdf git gh brew
   bundler dotenv macos rake rbenv ruby
   colorize command-not-found compleat common-aliases
   zsh-autosuggestions zsh-syntax-highlighting themes
@@ -210,6 +210,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-PATH=~/.console-ninja/.bin:$PATH
 # bun completions
 [ -s "/Users/tutkun/.bun/_bun" ] && source "/Users/tutkun/.bun/_bun"
