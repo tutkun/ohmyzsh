@@ -38,6 +38,7 @@ function _frontend() {
     'mdn: Search in MDN website'
     'nodejs: Search in NodeJS website'
     'npmjs: Search in npmjs website'
+    'nextjs: Search in nextjs website'
     'packagephobia: Search in Packagephobia website'
     'qunit: Search in Qunit website'
     'reactjs: Search in React website'
@@ -120,6 +121,9 @@ function _frontend() {
           _describe -t points "Warp points" frontend_points && ret=0
           ;;
         npmjs)
+          _describe -t points "Warp points" frontend_points && ret=0
+          ;;
+        nextjs)
           _describe -t points "Warp points" frontend_points && ret=0
           ;;
         bundlephobia)
