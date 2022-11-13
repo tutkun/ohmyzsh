@@ -28,7 +28,6 @@ if [[ -x /usr/lib/command-not-found || -x /usr/share/command-not-found/command-n
       /usr/share/command-not-found/command-not-found -- "$1"
       return $?
     else
-      printf -e "\a"
       printf "zsh: komut bulunamadı: %s\n" "$1" >&2
       return 127
     fi
