@@ -29,6 +29,7 @@ if [[ -x /usr/lib/command-not-found || -x /usr/share/command-not-found/command-n
       return $?
     else
       printf "\\e[31m;zsh: komut bulunamadı: \\[33m;%s\\[39m;\n" "$1" >&2
+    # printf "zsh: command not found: %s\n" "$1" >&2
       return 127
     fi
   }
@@ -42,7 +43,8 @@ if [[ -x /usr/libexec/pk-command-not-found ]]; then
       return $?
     fi
 
-    printf "zsh: command not found: %s\n" "$1" >&2
+    printf "\\e[31m;zsh: komut bulunamadı: \\[33m;%s\\[39m;\n" "$1" >&2
+    # printf "zsh: command not found: %s\n" "$1" >&2
     return 127
   }
 fi
