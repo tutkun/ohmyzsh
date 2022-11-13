@@ -33,6 +33,9 @@ plugins=(git colorize command-not-found frontend-search compleat themes common-a
 # ASFD Eklentisi için Hombrew ile kuruldu
 # source /usr/local/opt/asdf/libexec/asdf.sh
 
+# Yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 # Python3
 export PATH="$PATH:$HOME/Library/Python/3.8/bin"
 
