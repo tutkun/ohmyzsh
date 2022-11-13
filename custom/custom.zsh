@@ -28,7 +28,7 @@ ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master 
 plugins=(
     git
     colorize
-    command-not-found
+    "command-not-found"
     compleat
     common-aliases
     themes
