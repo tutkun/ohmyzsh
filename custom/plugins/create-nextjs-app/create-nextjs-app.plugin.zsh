@@ -2,7 +2,7 @@
 # here will override ones with the same name in the main plugins directory.
 
 # GitHub Projesi oluşturma yardımı
-function create-nextjs-app(){
+create-nextjs-app(){
     # CURR_DIR=$PWD
     DIR="${HOME}/Developer/sites"
     GITHUB="https://github.com/tutkun/${1}"
