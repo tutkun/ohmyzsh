@@ -11,6 +11,7 @@
 
 # USER CONFIGURATIONS:
 # ====================
+# https://top-scripts.blogspot.com/2011/01/shell-commands.html
 
 # MY THEMES:
 ZSH_THEME="agnoster" # arkaplanı renkli satır
