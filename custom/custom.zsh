@@ -25,16 +25,7 @@ ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗
 ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master ☂ ✭
 
 # MY PLUGINS:
-plugins=(
-    git
-    colorize
-    command-not-found
-    frontend-search
-    compleat
-    themes
-    common-aliases
-    create-nextjs-app
-)
+plugins=(git colorize command-not-found frontend-search compleat themes common-aliases create-nextjs-app )
 
 # Android Studio için JAVA_HME tanımlaması:
 # export JAVA_HOME="/usr/libexec/java_home"
