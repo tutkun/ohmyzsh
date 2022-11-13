@@ -28,10 +28,11 @@ ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master 
 plugins=(
     git
     colorize
-    "command-not-found"
+    command-not-found
+    frontend-search
     compleat
-    common-aliases
     themes
+    common-aliases
     create-nextjs-app
 )
 
