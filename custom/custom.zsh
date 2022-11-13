@@ -15,32 +15,31 @@
 # MY THEMES:
 ZSH_THEME="agnoster" # arkaplanı renkli satır
 ZSH_THEME="amuse" # ~/path on  master! ⌚ 14:21:59
-ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master ☂ ✭
 ZSH_THEME="suvash" # ╭─tutkun at MacBook-Pro in ~/.oh-my-zsh on master!
 ZSH_THEME="sunrise" # --- ~/.oh-my-zsh ‹master* ?› » 
 ZSH_THEME="norm" # λ MacBook-Pro .oh-my-zsh → λ git master* →
 ZSH_THEME="strug" # ╭─tutkun@MacBook-Pro in ~/.oh-my-zsh on master ✘ (origin/master -77)
 ZSH_THEME="jnrowe" # Ξ ~/.oh-my-zsh git:(master) ▶ 
 ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗ 
+ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master ☂ ✭
 
 # MY PLUGINS:
 plugins=(
-    git 
-    alias-finder 
-    colorize 
-    command-not-found 
-    compleat 
-    common-aliases 
-    themes 
-    create-nextjs-app 
-    asdf 
+    alias-finder
+    git
+    colorize
+    command-not-found
+    compleat
+    common-aliases
+    themes
+    create-nextjs-app
 )
 
 # Android Studio için JAVA_HME tanımlaması:
 # export JAVA_HOME="/usr/libexec/java_home"
 
 # ASFD Eklentisi için Hombrew ile kuruldu
-source /usr/local/opt/asdf/libexec/asdf.sh
+# source /usr/local/opt/asdf/libexec/asdf.sh
 
 # Python3
 export PATH="$PATH:$HOME/Library/Python/3.8/bin"
