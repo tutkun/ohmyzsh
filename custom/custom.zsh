@@ -24,11 +24,8 @@ ZSH_THEME="jnrowe" # Ξ ~/.oh-my-zsh git:(master) ▶
 ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗ 
 ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master ☂ ✭
 
-ZSH_ALIAS_FINDER_AUTOMATIC= true
-
 # MY PLUGINS:
 plugins=(
-    alias-finder
     git
     colorize
     command-not-found
