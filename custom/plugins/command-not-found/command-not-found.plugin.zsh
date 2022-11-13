@@ -41,7 +41,7 @@ if [[ -x /usr/libexec/pk-command-not-found ]]; then
       /usr/libexec/pk-command-not-found "$@"
       return $?
     fi
-
+    
     printf "zsh: komut bulunamadı: %s\n" "$1" >&2
     return 127
   }
