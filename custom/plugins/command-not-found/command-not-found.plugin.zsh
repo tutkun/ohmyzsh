@@ -29,7 +29,7 @@ if [[ -x /usr/lib/command-not-found || -x /usr/share/command-not-found/command-n
       return $?
     else
       
-      printf "zsh: komut bulunamadi: %s\n" "$1" >&2
+      printf "\e[31mzsh:\e[m \e[31mkomut bulunamadi:\e[m \e[30m%s\e[m\n" "$1" >&2
       return 127
     fi
   }
@@ -43,7 +43,7 @@ if [[ -x /usr/libexec/pk-command-not-found ]]; then
       return $?
     fi
     
-    printf "zsh: komut bulunamadi: %s\n" "$1" >&2
+    printf "\e[31mzsh:\e[m \e[31mkomut bulunamadi:\e[m \e[30m%s\e[m\n" "$1" >&2
     return 127
   }
 fi
