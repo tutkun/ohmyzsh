@@ -9,6 +9,9 @@
 # cd $brainstormr
 #
 
+# Aşağıdaki komut, .oh-my-zsh'ın plugins kısmındaki submodule dosyalarını otomatik günceller
+git submodule update --init --recursive
+
 # USER CONFIGURATIONS:
 # ====================
 # https://top-scripts.blogspot.com/2011/01/shell-commands.html
