@@ -30,6 +30,7 @@ ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master 
 # MY PLUGINS:
 plugins=(
   git
+  gh
   colorize
   command-not-found
   compleat
