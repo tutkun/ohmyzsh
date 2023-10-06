@@ -39,8 +39,8 @@ plugins=(
   create-nextjs-app
 )
 
-# Android Studio için JAVA_HME tanımlaması:
-export JAVA_HOME="/usr/libexec/java_home -v 11"
+# Android Studio için JAVA_HOME tanımlaması:
+export JAVA_HOME="/usr/libexec/java_home -v 21"
 
 # ASFD Eklentisi için Hombrew ile kuruldu
 # source /usr/local/opt/asdf/libexec/asdf.sh
