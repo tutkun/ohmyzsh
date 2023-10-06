@@ -42,9 +42,6 @@ plugins=(
 # Android Studio için JAVA_HOME tanımlaması:
 export JAVA_HOME="/usr/libexec/java_home -v 21"
 
-# ASFD Eklentisi için Hombrew ile kuruldu
-# source /usr/local/opt/asdf/libexec/asdf.sh
-
 # Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 

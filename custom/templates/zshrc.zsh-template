@@ -83,7 +83,6 @@ ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master 
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  gh
   zsh-syntax-highlighting
   zsh-autosuggestions
   colorize
@@ -98,11 +97,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# Android Studio için JAVA_HME tanımlaması:
-export JAVA_HOME="/usr/libexec/java_home -v 11"
-
-# ASFD Eklentisi için Hombrew ile kuruldu
-# source /usr/local/opt/asdf/libexec/asdf.sh
+# Android Studio için JAVA_HOME tanımlaması:
+export JAVA_HOME="/usr/libexec/java_home -v 21"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -137,9 +133,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Flutter SDK Yolunu Belirtiyoruz:
 export PATH="$PATH:$HOME/flutter-sdk/bin:$HOME/.pub-cache/bin"
-
-# brew node@16
-# export PATH="$PATH:/usr/local/opt/node@16/bin"
 
 # flutter create --org com.newcompany --project-name newproject .
 alias create-new-flutter-project="flutter create --org com.tutkuns --project-name "
