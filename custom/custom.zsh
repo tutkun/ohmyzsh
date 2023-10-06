@@ -17,21 +17,29 @@ git submodule update --init --recursive
 # https://top-scripts.blogspot.com/2011/01/shell-commands.html
 
 # MY THEMES:
-ZSH_THEME="agnoster" # arkaplanı renkli satır
-ZSH_THEME="amuse" # ~/path on  master! ⌚ 14:21:59
-ZSH_THEME="suvash" # ╭─tutkun at MacBook-Pro in ~/.oh-my-zsh on master!
-ZSH_THEME="sunrise" # --- ~/.oh-my-zsh ‹master* ?› » 
-ZSH_THEME="norm" # λ MacBook-Pro .oh-my-zsh → λ git master* →
-ZSH_THEME="strug" # ╭─tutkun@MacBook-Pro in ~/.oh-my-zsh on master ✘ (origin/master -77)
-ZSH_THEME="jnrowe" # Ξ ~/.oh-my-zsh git:(master) ▶ 
-ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗ 
+# ZSH_THEME="agnoster" # arkaplanı renkli satır
+# ZSH_THEME="amuse" # ~/path on  master! ⌚ 14:21:59
+# ZSH_THEME="suvash" # ╭─tutkun at MacBook-Pro in ~/.oh-my-zsh on master!
+# ZSH_THEME="sunrise" # --- ~/.oh-my-zsh ‹master* ?› » 
+# ZSH_THEME="norm" # λ MacBook-Pro .oh-my-zsh → λ git master* →
+# ZSH_THEME="strug" # ╭─tutkun@MacBook-Pro in ~/.oh-my-zsh on master ✘ (origin/master -77)
+# ZSH_THEME="jnrowe" # Ξ ~/.oh-my-zsh git:(master) ▶ 
+# ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗ 
 ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master ☂ ✭
 
 # MY PLUGINS:
-plugins=(git colorize command-not-found frontend-search compleat themes common-aliases create-nextjs-app )
+plugins=(
+  git
+  colorize
+  command-not-found
+  compleat
+  themes
+  common-aliases
+  create-nextjs-app
+)
 
 # Android Studio için JAVA_HME tanımlaması:
-# export JAVA_HOME="/usr/libexec/java_home"
+export JAVA_HOME="/usr/libexec/java_home -v 11"
 
 # ASFD Eklentisi için Hombrew ile kuruldu
 # source /usr/local/opt/asdf/libexec/asdf.sh
@@ -40,19 +48,16 @@ plugins=(git colorize command-not-found frontend-search compleat themes common-a
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Python3
-export PATH="$PATH:$HOME/Library/Python/3.8/bin"
+# export PATH="$PATH:$HOME/Library/Python/3.8/bin"
 
 # Flutter SDK Yolunu Belirtiyoruz:
 export PATH="$PATH:$HOME/flutter-sdk/bin:$HOME/.pub-cache/bin"
-
-# brew node@16
-export PATH="$PATH:/usr/local/opt/node@16/bin"
 
 # Visual Studio Code (code)
 export PATH="$PATH:/Applications/Code.app/Contents/Resources/app/bin"
 
 # flutter create --org com.newcompany --project-name newproject .
-alias flutter-new-app="flutter create --org com.tutkuns --project-name "
+alias create-new-flutter-project="flutter create --org com.tutkuns --project-name "
 
 # HELPER FUNCTIONS:
 # =================
