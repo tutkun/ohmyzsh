@@ -181,3 +181,5 @@ create-nextjs-app () {
         cd -
     fi;
 }
+
+export omz update
