@@ -9,9 +9,6 @@
 # cd $brainstormr
 #
 
-# Aşağıdaki komut, .oh-my-zsh'ın plugins kısmındaki submodule dosyalarını otomatik günceller
-git submodule update --init --recursive
-
 # USER CONFIGURATIONS:
 # ====================
 # https://top-scripts.blogspot.com/2011/01/shell-commands.html
@@ -51,4 +48,7 @@ alias create-new-flutter-project="flutter create --org com.tutkuns --project-nam
 # HELPER FUNCTIONS:
 # =================
 
-# export omz update
+# Aşağıdaki komut, .oh-my-zsh'ın plugins kısmındaki submodule dosyalarını otomatik günceller
+# git submodule update --init --recursive
+
+export omz update
