@@ -81,24 +81,14 @@ ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master 
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  colorize
-  command-not-found
-  compleat
-  common-aliases
-  themes
-  create-nextjs-app
-)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions colorize command-not-found compleat common-aliases themes create-nextjs-app)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 # Android Studio için JAVA_HOME tanımlaması:
-export JAVA_HOME="/usr/libexec/java_home -v 21"
+export JAVA_HOME=/usr/libexec/java_home -v 11
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -182,4 +172,4 @@ create-nextjs-app () {
     fi;
 }
 
-export omz update
+# export omz update

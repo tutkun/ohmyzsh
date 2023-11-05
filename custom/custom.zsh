@@ -51,4 +51,4 @@ alias create-new-flutter-project="flutter create --org com.tutkuns --project-nam
 # HELPER FUNCTIONS:
 # =================
 
-export omz update
+# export omz update
