@@ -33,6 +33,9 @@ alias JAVA_HOME=/usr/libexec/java_home -v 21
 # Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# Brew intell mac için:
+export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+
 # Python3
 # export PATH="$PATH:$HOME/Library/Python/3.8/bin"
 
