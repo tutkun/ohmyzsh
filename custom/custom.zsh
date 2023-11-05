@@ -28,7 +28,7 @@ ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master 
 plugins=(git colorize command-not-found compleat themes common-aliases create-nextjs-app)
 
 # Android Studio için JAVA_HOME tanımlaması:
-alias JAVA_HOME="/usr/libexec/java_home -v 21"
+alias JAVA_HOME="/usr/libexec/java_home -v 11"
 
 # Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
@@ -49,6 +49,6 @@ alias create-new-flutter-project="flutter create --org com.tutkuns --project-nam
 # =================
 
 # Aşağıdaki komut, .oh-my-zsh'ın plugins kısmındaki submodule dosyalarını otomatik günceller
-git submodule update --init --recursive
+# git submodule update --init --recursive
 
 export omz update
