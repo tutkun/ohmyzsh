@@ -28,19 +28,10 @@ git submodule update --init --recursive
 ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master ☂ ✭
 
 # MY PLUGINS:
-plugins=(
-  git
-  gh
-  colorize
-  command-not-found
-  compleat
-  themes
-  common-aliases
-  create-nextjs-app
-)
+plugins=(git colorize command-not-found compleat themes common-aliases create-nextjs-app)
 
 # Android Studio için JAVA_HOME tanımlaması:
-export JAVA_HOME="/usr/libexec/java_home -v 21"
+export JAVA_HOME=/usr/libexec/java_home -v 21
 
 # Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
