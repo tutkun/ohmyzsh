@@ -88,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # Android Studio için JAVA_HOME tanımlaması:
-export JAVA_HOME=/usr/libexec/java_home -v 11
+export JAVA_HOME=/usr/libexec/java_home -v 19
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
