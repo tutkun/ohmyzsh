@@ -28,7 +28,7 @@ ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master 
 plugins=(git gh colorize command-not-found compleat themes common-aliases create-nextjs-app webos-tv-cli)
 
 # Android Studio için JAVA_HOME tanımlaması:
-alias JAVA_HOME=/usr/libexec/java_home -v 21
+alias JAVA_HOME=/usr/libexec/java_home -v 19
 
 # Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
