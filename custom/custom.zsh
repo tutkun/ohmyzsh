@@ -36,14 +36,14 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # Brew intell mac için:
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
-# Python3
-# export PATH="$PATH:$HOME/Library/Python/3.8/bin"
-
 # Flutter SDK Yolunu Belirtiyoruz:
 export PATH="$PATH:$HOME/flutter-sdk/bin:$HOME/.pub-cache/bin"
 
 # Visual Studio Code (code)
 export PATH="$PATH:/Applications/Code.app/Contents/Resources/app/bin"
+
+# Ruby güncelleme vs kontrolü için rbenv yükleniyor
+eval "$(~/.rbenv/bin/rbenv init - zsh)"
 
 # flutter create --org com.newcompany --project-name newproject .
 alias create-new-flutter-project="flutter create --org com.tutkuns --project-name "
