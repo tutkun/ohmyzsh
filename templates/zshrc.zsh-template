@@ -1,3 +1,6 @@
+# .NET için telemetri takibini önle:
+DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -90,8 +93,8 @@ HIST_STAMPS="mm/dd/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git gh brew
-  bundler dotenv macos rake rbenv ruby
+  git gh
+  dotenv macos rake rbenv ruby
   colorize command-not-found compleat common-aliases
   zsh-autosuggestions zsh-syntax-highlighting themes
   alias-finder sublime
