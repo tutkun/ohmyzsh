@@ -339,6 +339,7 @@ setup_zshrc() {
 
   # Replace $HOME path with '$HOME' in $ZSH variable in .zshrc file
   omz=$(echo "$ZSH" | sed "s|^$HOME/|\$HOME/|")
+  cp "$ZSH/custom/templates/zshrc.zsh-template" "$ZSH/templates/zshrc.zsh-template"
   sed "s|^export ZSH=.*$|export ZSH=\"${omz}\"|" "$ZSH/templates/zshrc.zsh-template" > ~/.zshrc-omztemp
   mv -f ~/.zshrc-omztemp ~/.zshrc
 
