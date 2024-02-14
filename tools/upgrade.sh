@@ -203,7 +203,7 @@ git checkout -q "$branch" -- || exit 1
 last_commit=$(git rev-parse "$branch")
 
 # Update Oh My Zsh
-printf "${BLUE}%s${RESET}\n" "Updating Oh My Zsh"
+printf "${BLUE}%s${RESET}\n" "Oh My Zsh güncelleniyor..."
 if LANG= git pull --quiet --rebase $remote $branch; then
   # Check if it was really updated or not
   if [[ "$(git rev-parse HEAD)" = "$last_commit" ]]; then
