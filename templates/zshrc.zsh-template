@@ -1,3 +1,6 @@
+# .NET için telemetri takibini önle:
+DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$PATH:$HOME/bin:/usr/local/bin
 
@@ -37,7 +40,7 @@ ZSH_THEME="daveverwer" # MacBookPro:.oh-my-zsh (master) $
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -72,30 +75,51 @@ ZSH_THEME="daveverwer" # MacBookPro:.oh-my-zsh (master) $
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# ZSH_CUSTOM="$ZSH/other-custom-directory"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions colorize command-not-found compleat common-aliases themes create-nextjs-app)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# Android Studio için JAVA_HOME tanımlaması:
-export JAVA_HOME=/usr/libexec/java_home -v 19
-
-# export MANPATH="/usr/local/man:$MANPATH"
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  colorize
+  command-not-found
+  compleat
+  alias-finder
+  frontend-search
+  themes
+  sublime
+  gh
+  common-aliases
+  create-nextjs-app
+  webos-tv-cli
+)
 
 # You may need to manually set your language environment
 export LANG=tr_TR.UTF-8
 export LC_ALL=tr_TR.UTF-8
+
+source $ZSH/oh-my-zsh.sh
+
+# USER CONFIGURATIONS
+################################
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# Android Studio için JAVA_HOME tanımlaması:
+export JAVA_HOME=/usr/libexec/java_home -v 19
+
+# Node@18
+export PATH="/usr/local/opt/node@18/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/node@18/lib"
+export CPPFLAGS="-I/usr/local/opt/node@18/include"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -113,20 +137,31 @@ export LC_ALL=tr_TR.UTF-8
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="code ~/.zshrc"
-# alias ohmyzsh="code ~/.oh-my-zsh"
+alias zshconfig="code ~/.zshrc"
+alias ohmyzsh="code ~/.oh-my-zsh"
 
-# Yarn
-export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
+# Pnpm
+export PNPM_HOME="$HOME/.pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# Pnpm End
 
-# Python3
-# export PATH="$PATH:$HOME/Library/Python/3.8/bin"
+# Yarn using
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# Ninja adlı vscode plugin için
+PATH=~/.console-ninja/.bin:$PATH
 
 # Flutter SDK Yolunu Belirtiyoruz:
 export PATH="$PATH:$HOME/flutter-sdk/bin:$HOME/.pub-cache/bin"
 
 # flutter create --org com.newcompany --project-name newproject .
-alias create-new-flutter-project="flutter create --org com.tutkuns --project-name "
+alias create-new-flutter-project="flutter create --org com.tutkuns.apps --project-name "
 
 # Visual Studio Code (code)
 export PATH="$PATH:/Applications/Code.app/Contents/Resources/app/bin"
@@ -134,43 +169,37 @@ export PATH="$PATH:/Applications/Code.app/Contents/Resources/app/bin"
 # Jekyll için Ruby Kurulum Ayarları:
 # source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
 # source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
-# chruby ruby-3.1.1
+# chruby ruby
 
 
 # HELPER FUNCTIONS:
 # =================
 
 # GitHub Projesi oluşturma yardımı
-create-nextjs-app () {
-    # CURR_DIR=$PWD
-    DIR=$HOME/Developer/sites
+# create-nextjs-app () {
+#     # CURR_DIR=$PWD
+#     DIR=$HOME/Developer/sites
+#     PROJECT_DIR=$DIR/$1
+#     if [ -d "$PROJECT_DIR" ]; then
+#         echo "\n\e[31mUYARI:\e[m" "\t\e[31m$1\e[m \e[32mdizini zaten mevcut. Bu işlem dizindeki verileri korumak için durduruldu.\e[m\n" "\t\e[34m$DIR/\e[31m$1\e[m\e[m\n"
+#     else
+#         # NextJS projesi çekiliyor
+#         # npx create-next-app $PROJECT_DIR --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"
+#         git clone https://github.com/tutkun/nextjs-webapp-template $PROJECT_DIR
+#         rm -rf $PROJECT_DIR/.git/
+#         # Projenin Kurulacağı Dizine Geç
+#         cd $PROJECT_DIR
+#         echo "$(PROJECT_DIR) dizinine geçiş yapıldı..."        
+#         # Git ile Projeye Dosyaları Ekle
+#         git init
+#         git add .
+#         git commit -m "Uzay yolculuğu başladı... 🚀"
+#         git branch -M master
+#         git remote add origin https://github.com/tutkun/$1.git
+#         git push -u origin master
 
-    PROJECT_DIR=$DIR/$1
-
-    if [ -d "$PROJECT_DIR" ]; then
-        echo "\n\e[31mUYARI:\e[m" "\t\e[31m$1\e[m \e[32mdizini zaten mevcut. Bu işlem dizindeki verileri korumak için durduruldu.\e[m\n" "\t\e[34m$DIR/\e[31m$1\e[m\e[m\n"
-    else
-        # NextJS projesi çekiliyor
-        # npx create-next-app $PROJECT_DIR --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"
-        git clone https://github.com/tutkun/nextjs-webapp-template $PROJECT_DIR
-        rm -rf $PROJECT_DIR/.git/
-        
-        # projenin kurulacağı dizine geç
-        cd $PROJECT_DIR
-        echo "$(PROJECT_DIR) dizinine geçiş yapıldı..."
-        
-        # git ile projeye dosyaları ekle
-        git init
-        git add .
-        git commit -m "Uzay yolculuğu başladı... 🚀"
-        git branch -M master
-        git remote add origin https://github.com/tutkun/$1.git
-        git push -u origin master
-
-        # bir önceki dizine geri dön
-        echo "Bir önceki dizin olan \"$(-)\" dizine geçiş yapılıyor..."
-        cd -
-    fi;
-}
-
-# export omz update
+#         # Bir Önceki Dizine Geri Dön
+#         echo "Bir önceki dizin olan \"$(-)\" dizine geçiş yapılıyor..."
+#         cd -
+#     fi;
+# }
