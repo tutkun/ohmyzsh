@@ -18,7 +18,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="strug" # ╭─tutkun@MacBook-Pro in ~/.oh-my-zsh on master ✘ (origin/master -77)
 # ZSH_THEME="jnrowe" # Ξ ~/.oh-my-zsh git:(master) ▶ 
 # ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗ 
-ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master ☂ ✭
+# ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master ☂ ✭
+ZSH_THEME="daveverwer" # MacBookPro:.oh-my-zsh (master) $
 
 
 # Set list of themes to pick from when loading at random
