@@ -316,7 +316,7 @@ setup_zshrc() {
   if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
     # Skip this if the user doesn't want to replace an existing .zshrc
     if [ "$KEEP_ZSHRC" = yes ]; then
-      echo "${FMT_YELLOW}~/.zshrc bulundu.${FMT_RESET} ${FMT_GREEN}Keeping...${FMT_RESET}"
+      echo "${FMT_YELLOW}~/.zshrc bulundu.${FMT_RESET} ${FMT_GREEN}Korunuyor...${FMT_RESET}"
       return
     fi
     if [ -e "$OLD_ZSHRC" ]; then
@@ -339,7 +339,10 @@ setup_zshrc() {
 
   # Replace $HOME path with '$HOME' in $ZSH variable in .zshrc file
   omz=$(echo "$ZSH" | sed "s|^$HOME/|\$HOME/|")
-  cp "$ZSH/custom/templates/zshrc.zsh-template" "$ZSH/templates/zshrc.zsh-template"
+  # Bu ekleme ile custom'daki template dosyası öncelikli olacak
+  if [ -e "$ZSH/custom/templates/zshrc.zsh-template" ]; then
+    cp "$ZSH/custom/templates/zshrc.zsh-template" "$ZSH/templates/zshrc.zsh-template"
+  fi
   sed "s|^export ZSH=.*$|export ZSH=\"${omz}\"|" "$ZSH/templates/zshrc.zsh-template" > ~/.zshrc-omztemp
   mv -f ~/.zshrc-omztemp ~/.zshrc
 
@@ -453,9 +456,9 @@ print_success() {
   printf '%s    %s        %s           %s /____/ %s       %s     %s          %s....şimdi kuruldu!%s\n' $FMT_RAINBOW $FMT_GREEN $FMT_RESET
   printf '\n'
   printf '\n'
-  printf "%s %s %s\n" "Before you scream ${FMT_BOLD}${FMT_YELLOW}Oh My Zsh!${FMT_RESET} look over the" \
+  printf "%s %s %s\n" "${FMT_BOLD}${FMT_YELLOW}Oh My Zsh!${FMT_RESET} diye bağırmadan önce lütfen" \
     "$(fmt_code "$(fmt_link ".zshrc" "file://$HOME/.zshrc" --text)")" \
-    "file to select plugins, themes, and options."
+    "dosyasını inceleyerek eklentileri, temaları ve seçenekleri seçin."
   printf '\n'
   printf '%s\n' "• X'de bizi takip et: $(fmt_link @ohmyzsh https://twitter.com/ohmyzsh)"
   printf '%s\n' "• Discord'a katıl: $(fmt_link "Discord server" https://discord.gg/ohmyzsh)"
