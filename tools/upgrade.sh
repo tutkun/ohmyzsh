@@ -232,9 +232,9 @@ if LANG= git pull --quiet --rebase $remote $branch; then
   printf '%s    %s        %s           %s /____/ %s       %s     %s          %s\n'      $RAINBOW $RESET
   printf '\n'
   printf "${BLUE}%s${RESET}\n\n" "$message"
-  printf "${BLUE}${BOLD}%s %s${RESET}\n" "En son haberleri ve güncellemeleri takip etmek için bizi Twitter'da takip edin:" "$(fmt_link @ohmyzsh https://twitter.com/ohmyzsh)"
-  printf "${BLUE}${BOLD}%s %s${RESET}\n" "Topluluğa dahil olmak ister misiniz? Discord'umuza katılın:" "$(fmt_link "Discord server" https://discord.gg/ohmyzsh)"
-  printf "${BLUE}${BOLD}%s %s${RESET}\n" "Get your Oh My Zsh swag at:" "$(fmt_link "Planet Argon Shop" https://shop.planetargon.com/collections/oh-my-zsh)"
+  printf "${BLUE}${BOLD}%s %s${RESET}\n" "Son güncellemelerden haberdar olmak için X'te bizi takip edin:" "$(fmt_link @ohmyzsh https://x.com/ohmyzsh)"
+  printf "${BLUE}${BOLD}%s %s${RESET}\n" "Topluluğa dahil olmak ister misiniz? Discord'umuza katılın:" "$(fmt_link "Discord" https://discord.gg/ohmyzsh)"
+  printf "${BLUE}${BOLD}%s %s${RESET}\n" "Oh My Zsh swag'ınızı şu adresten alın:" "$(fmt_link "Planet Argon Shop" https://shop.planetargon.com/collections/oh-my-zsh)"
 else
   ret=$?
   printf "${RED}%s${RESET}\n" 'Güncellenirken bir hata oluştu. Daha sonra tekrar deneyin?'
