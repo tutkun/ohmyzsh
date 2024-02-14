@@ -41,9 +41,9 @@ function usage() {
     echo "Usage: $0 [options] [theme]"
     echo
     echo "Options"
-    echo "  -l   List available themes"
-    echo "  -s   Show all themes"
-    echo "  -h   Get this help message"
+    echo "  -l   Mevcut temaları listele"
+    echo "  -s   Tüm temaları göster"
+    echo "  -h   Bu yardım mesajını gösterir"
     exit 1
 }
 
@@ -56,10 +56,10 @@ function list_themes() {
 
 function insert_favlist() {
     if grep -q "$THEME_NAME" $FAVLIST 2> /dev/null ; then
-        echo "Already in favlist"
+        echo "Zaten favori listemde"
     else
         echo $THEME_NAME >> $FAVLIST
-        echo "Saved to favlist"
+        echo "Favori listesine kaydedildi"
     fi
 
 }
@@ -70,7 +70,7 @@ function theme_chooser() {
         theme_preview $THEME
         echo
         if [[ -z $1 ]]; then
-            noyes "Do you want to add it to your favourite list ($FAVLIST)?" || \
+            noyes "Favori listenize ($FAVLIST) eklemek ister misiniz?" || \
                   insert_favlist $THEME_NAME
             echo
         fi

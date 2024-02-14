@@ -463,7 +463,7 @@ function main {
   display-release
 
   if (( truncate )); then
-    echo " ...more commits omitted"
+    echo " ...daha fazla taahhüt atlandı"
     echo
   fi
 }

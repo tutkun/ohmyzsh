@@ -171,7 +171,7 @@ function has_typed_input() {
 
   # Test if Oh My Zsh directory is a git repository
   if ! (builtin cd -q "$ZSH" && LANG= git rev-parse &>/dev/null); then
-    echo >&2 "[oh-my-zsh] Can't update: not a git repository."
+    echo >&2 "[oh-my-zsh] Güncellenmedi: Bir git repository değil."
     return
   fi
 
@@ -183,7 +183,7 @@ function has_typed_input() {
   # If in reminder mode or user has typed input, show reminder and exit
   if [[ "$update_mode" = reminder ]] || has_typed_input; then
     printf '\r\e[0K' # move cursor to first column and clear whole line
-    echo "[oh-my-zsh] It's time to update! You can do that by running \`omz update\`"
+    echo "[oh-my-zsh] Güncelleme zamanı! \`omz update\` komutunu çalıştırarak güncelleyebilirsin."
     return 0
   fi
 
@@ -195,13 +195,13 @@ function has_typed_input() {
 
   # Ask for confirmation and only update on 'y', 'Y' or Enter
   # Otherwise just show a reminder for how to update
-  echo -n "[oh-my-zsh] Would you like to update? [Y/n] "
+  echo -n "[oh-my-zsh] Güncellemek istiyor musun? [Y/n] "
   read -r -k 1 option
   [[ "$option" = $'\n' ]] || echo
   case "$option" in
     [yY$'\n']) update_ohmyzsh ;;
     [nN]) update_last_updated_file ;&
-    *) echo "[oh-my-zsh] You can update manually by running \`omz update\`" ;;
+    *) echo "[oh-my-zsh] \`omz update\` ile manuel olarak güncelleyebilirsin." ;;
   esac
 }
 

@@ -207,9 +207,11 @@ printf "${BLUE}%s${RESET}\n" "Updating Oh My Zsh"
 if LANG= git pull --quiet --rebase $remote $branch; then
   # Check if it was really updated or not
   if [[ "$(git rev-parse HEAD)" = "$last_commit" ]]; then
-    message="Oh My Zsh is already at the latest version."
+    # message="Oh My Zsh is already at the latest version."
+    message="Oh My Zsh zaten en son versiyonda."
   else
-    message="Hooray! Oh My Zsh has been updated!"
+    # message="Hooray! Oh My Zsh has been updated!"
+    message="Oley! Oh My Zsh güncellendi!"
 
     # Save the commit prior to updating
     git config oh-my-zsh.lastVersion "$last_commit"
@@ -219,7 +221,7 @@ if LANG= git pull --quiet --rebase $remote $branch; then
       "$ZSH/tools/changelog.sh" HEAD "$last_commit"
     fi
 
-    printf "${BLUE}%s \`${BOLD}%s${RESET}${BLUE}\`${RESET}\n" "You can see the changelog with" "omz changelog"
+    printf "${BLUE}%s \`${BOLD}%s${RESET}${BLUE}\`${RESET}\n" "Değişiklik günlüğünü şununla görebilirsiniz:" "omz changelog"
   fi
 
   printf '%s         %s__      %s           %s        %s       %s     %s__   %s\n'      $RAINBOW $RESET
@@ -230,12 +232,12 @@ if LANG= git pull --quiet --rebase $remote $branch; then
   printf '%s    %s        %s           %s /____/ %s       %s     %s          %s\n'      $RAINBOW $RESET
   printf '\n'
   printf "${BLUE}%s${RESET}\n\n" "$message"
-  printf "${BLUE}${BOLD}%s %s${RESET}\n" "To keep up with the latest news and updates, follow us on Twitter:" "$(fmt_link @ohmyzsh https://twitter.com/ohmyzsh)"
-  printf "${BLUE}${BOLD}%s %s${RESET}\n" "Want to get involved in the community? Join our Discord:" "$(fmt_link "Discord server" https://discord.gg/ohmyzsh)"
+  printf "${BLUE}${BOLD}%s %s${RESET}\n" "En son haberleri ve güncellemeleri takip etmek için bizi Twitter'da takip edin:" "$(fmt_link @ohmyzsh https://twitter.com/ohmyzsh)"
+  printf "${BLUE}${BOLD}%s %s${RESET}\n" "Topluluğa dahil olmak ister misiniz? Discord'umuza katılın:" "$(fmt_link "Discord server" https://discord.gg/ohmyzsh)"
   printf "${BLUE}${BOLD}%s %s${RESET}\n" "Get your Oh My Zsh swag at:" "$(fmt_link "Planet Argon Shop" https://shop.planetargon.com/collections/oh-my-zsh)"
 else
   ret=$?
-  printf "${RED}%s${RESET}\n" 'There was an error updating. Try again later?'
+  printf "${RED}%s${RESET}\n" 'Güncellenirken bir hata oluştu. Daha sonra tekrar deneyin?'
 fi
 
 # go back to HEAD previous to update

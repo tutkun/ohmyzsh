@@ -265,17 +265,17 @@ setup_ohmyzsh() {
   # precedence over umasks except for filesystems mounted with option "noacl".
   umask g-w,o-w
 
-  echo "${FMT_BLUE}Cloning Oh My Zsh...${FMT_RESET}"
+  echo "${FMT_BLUE}Oh My Zsh kopyalanıyor...${FMT_RESET}"
 
   command_exists git || {
-    fmt_error "git is not installed"
+    fmt_error "git yüklü değil"
     exit 1
   }
 
   ostype=$(uname)
   if [ -z "${ostype%CYGWIN*}" ] && git --version | grep -Eq 'msysgit|windows'; then
-    fmt_error "Windows/MSYS Git is not supported on Cygwin"
-    fmt_error "Make sure the Cygwin git package is installed and is first on the \$PATH"
+    fmt_error "Windows/MSYS Git, Cygwin'de desteklenmiyor"
+    fmt_error "Cygwin git paketinin kurulu olduğundan ve \$PATH yolunda ilk sırada olduğundan emin olun"
     exit 1
   fi
 
@@ -295,7 +295,8 @@ setup_ohmyzsh() {
       cd -
       rm -rf "$ZSH" 2>/dev/null
     }
-    fmt_error "git clone of oh-my-zsh repo failed"
+    # fmt_error "git clone of oh-my-zsh repo failed"
+    fmt_error "oh-my-zsh deposunun git klonu başarısız oldu"
     exit 1
   }
   # Exit installation directory
@@ -308,33 +309,33 @@ setup_zshrc() {
   # Keep most recent old .zshrc at .zshrc.pre-oh-my-zsh, and older ones
   # with datestamp of installation that moved them aside, so we never actually
   # destroy a user's original zshrc
-  echo "${FMT_BLUE}Looking for an existing zsh config...${FMT_RESET}"
+  echo "${FMT_BLUE}Mevcut bir zsh config aranıyor...${FMT_RESET}"
 
   # Must use this exact name so uninstall.sh can find it
   OLD_ZSHRC=~/.zshrc.pre-oh-my-zsh
   if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
     # Skip this if the user doesn't want to replace an existing .zshrc
     if [ "$KEEP_ZSHRC" = yes ]; then
-      echo "${FMT_YELLOW}Found ~/.zshrc.${FMT_RESET} ${FMT_GREEN}Keeping...${FMT_RESET}"
+      echo "${FMT_YELLOW}~/.zshrc bulundu.${FMT_RESET} ${FMT_GREEN}Keeping...${FMT_RESET}"
       return
     fi
     if [ -e "$OLD_ZSHRC" ]; then
       OLD_OLD_ZSHRC="${OLD_ZSHRC}-$(date +%Y-%m-%d_%H-%M-%S)"
       if [ -e "$OLD_OLD_ZSHRC" ]; then
-        fmt_error "$OLD_OLD_ZSHRC exists. Can't back up ${OLD_ZSHRC}"
-        fmt_error "re-run the installer again in a couple of seconds"
+        fmt_error "$OLD_OLD_ZSHRC mevcut. ${OLD_ZSHRC} yedeklenemiyor"
+        fmt_error "yükleyiciyi birkaç saniye içinde yeniden çalıştırın"
         exit 1
       fi
       mv "$OLD_ZSHRC" "${OLD_OLD_ZSHRC}"
 
-      echo "${FMT_YELLOW}Found old ~/.zshrc.pre-oh-my-zsh." \
-        "${FMT_GREEN}Backing up to ${OLD_OLD_ZSHRC}${FMT_RESET}"
+      echo "${FMT_YELLOW}Eski ~/.zshrc.pre-oh-my-zsh bulundu." \
+        "${FMT_GREEN}${OLD_OLD_ZSHRC}'ye yedekleniyor${FMT_RESET}"
     fi
-    echo "${FMT_YELLOW}Found ~/.zshrc.${FMT_RESET} ${FMT_GREEN}Backing up to ${OLD_ZSHRC}${FMT_RESET}"
+    echo "${FMT_YELLOW}~/.zshrc bulundu.${FMT_RESET} ${FMT_GREEN}${OLD_ZSHRC}'a yedekleniyor${FMT_RESET}"
     mv ~/.zshrc "$OLD_ZSHRC"
   fi
 
-  echo "${FMT_GREEN}Using the Oh My Zsh template file and adding it to ~/.zshrc.${FMT_RESET}"
+  echo "${FMT_GREEN}Oh My Zsh template dosyasını kullanma ve onu ~/.zshrc'ye ekleme.${FMT_RESET}"
 
   # Replace $HOME path with '$HOME' in $ZSH variable in .zshrc file
   omz=$(echo "$ZSH" | sed "s|^$HOME/|\$HOME/|")
@@ -358,22 +359,22 @@ setup_shell() {
   # If this platform doesn't provide a "chsh" command, bail out.
   if ! command_exists chsh; then
     cat <<EOF
-I can't change your shell automatically because this system does not have chsh.
-${FMT_BLUE}Please manually change your default shell to zsh${FMT_RESET}
+Bu sistemde chsh olmadığı için kabuğunuzu otomatik olarak değiştiremiyorum.
+${FMT_BLUE}Lütfen varsayılan kabuğunuzu manuel olarak zsh olarak değiştirin${FMT_RESET}
 EOF
     return
   fi
 
-  echo "${FMT_BLUE}Time to change your default shell to zsh:${FMT_RESET}"
+  echo "${FMT_BLUE}Varsayılan kabuğunuzu zsh olarak değiştirme zamanı:${FMT_RESET}"
 
   # Prompt for user choice on changing the default login shell
-  printf '%sDo you want to change your default shell to zsh? [Y/n]%s ' \
+  printf '%sVarsayılan shelli zsh olarak değiştirmek ister misiniz? [Y/n]%s ' \
     "$FMT_YELLOW" "$FMT_RESET"
   read -r opt
   case $opt in
     y*|Y*|"") ;;
-    n*|N*) echo "Shell change skipped."; return ;;
-    *) echo "Invalid choice. Shell change skipped."; return ;;
+    n*|N*) echo "Shell değişikliği atlandı."; return ;;
+    *) echo "Hatalı seçim. Shell değişikliği atlandı."; return ;;
   esac
 
   # Check if we're running on Termux
@@ -389,7 +390,8 @@ EOF
     elif [ -f /usr/share/defaults/etc/shells ]; then # Solus OS
       shells_file=/usr/share/defaults/etc/shells
     else
-      fmt_error "could not find /etc/shells file. Change your default shell manually."
+      # fmt_error "could not find /etc/shells file. Change your default shell manually."
+      fmt_error "/etc/shells dosyası bulunamadı. Varsayılan kabuğunuzu manuel olarak değiştirin."
       return
     fi
 
@@ -398,8 +400,8 @@ EOF
     # 2. If that fails, get a zsh path from the shells file, then check it actually exists
     if ! zsh=$(command -v zsh) || ! grep -qx "$zsh" "$shells_file"; then
       if ! zsh=$(grep '^/.*/zsh$' "$shells_file" | tail -n 1) || [ ! -f "$zsh" ]; then
-        fmt_error "no zsh binary found or not present in '$shells_file'"
-        fmt_error "change your default shell manually."
+        fmt_error "hiçbir zsh binary dosyası bulunamadı veya '$shells_file' mevcut değil"
+        fmt_error "varsayılan kabuğunuzu manuel olarak değiştirin."
         return
       fi
     fi
@@ -412,7 +414,7 @@ EOF
     grep "^$USER:" /etc/passwd | awk -F: '{print $7}' > ~/.shell.pre-oh-my-zsh
   fi
 
-  echo "Changing your shell to $zsh..."
+  echo "Kabuğunuzu $zsh olarak değiştirme..."
 
   # Check if user has sudo privileges to run `chsh` with or without `sudo`
   #
@@ -431,10 +433,10 @@ EOF
 
   # Check if the shell change was successful
   if [ $? -ne 0 ]; then
-    fmt_error "chsh command unsuccessful. Change your default shell manually."
+    fmt_error "chsh komutu başarısız oldu. Varsayılan kabuğunuzu manuel olarak değiştirin."
   else
     export SHELL="$zsh"
-    echo "${FMT_GREEN}Shell successfully changed to '$zsh'.${FMT_RESET}"
+    echo "${FMT_GREEN}Kabuk başarıyla '$zsh' olarak değiştirildi.${FMT_RESET}"
   fi
 
   echo
@@ -447,16 +449,16 @@ print_success() {
   printf '%s / __ \\%s/ __ \\  %s / __ `__ \\%s/ / / / %s /_  / %s/ ___/%s __ \\ %s\n'  $FMT_RAINBOW $FMT_RESET
   printf '%s/ /_/ /%s / / / %s / / / / / /%s /_/ / %s   / /_%s(__  )%s / / / %s\n'      $FMT_RAINBOW $FMT_RESET
   printf '%s\\____/%s_/ /_/ %s /_/ /_/ /_/%s\\__, / %s   /___/%s____/%s_/ /_/  %s\n'    $FMT_RAINBOW $FMT_RESET
-  printf '%s    %s        %s           %s /____/ %s       %s     %s          %s....is now installed!%s\n' $FMT_RAINBOW $FMT_GREEN $FMT_RESET
+  printf '%s    %s        %s           %s /____/ %s       %s     %s          %s....şimdi kuruldu!%s\n' $FMT_RAINBOW $FMT_GREEN $FMT_RESET
   printf '\n'
   printf '\n'
   printf "%s %s %s\n" "Before you scream ${FMT_BOLD}${FMT_YELLOW}Oh My Zsh!${FMT_RESET} look over the" \
     "$(fmt_code "$(fmt_link ".zshrc" "file://$HOME/.zshrc" --text)")" \
     "file to select plugins, themes, and options."
   printf '\n'
-  printf '%s\n' "• Follow us on Twitter: $(fmt_link @ohmyzsh https://twitter.com/ohmyzsh)"
-  printf '%s\n' "• Join our Discord community: $(fmt_link "Discord server" https://discord.gg/ohmyzsh)"
-  printf '%s\n' "• Get stickers, t-shirts, coffee mugs and more: $(fmt_link "Planet Argon Shop" https://shop.planetargon.com/collections/oh-my-zsh)"
+  printf '%s\n' "• X'de bizi takip et: $(fmt_link @ohmyzsh https://twitter.com/ohmyzsh)"
+  printf '%s\n' "• Discord'a katıl: $(fmt_link "Discord server" https://discord.gg/ohmyzsh)"
+  printf '%s\n' "• Çıkartmalar, tişörtler, kahve kupaları ve daha fazlası: $(fmt_link "Planet Argon Mağazası" https://shop.planetargon.com/collections/oh-my-zsh)"
   printf '%s\n' $FMT_RESET
 }
 
@@ -480,28 +482,28 @@ main() {
   setup_color
 
   if ! command_exists zsh; then
-    echo "${FMT_YELLOW}Zsh is not installed.${FMT_RESET} Please install zsh first."
+    echo "${FMT_YELLOW}Zsh kurulu değil.${FMT_RESET} Lütfen ilk önce zsh'ı yükleyin."
     exit 1
   fi
 
   if [ -d "$ZSH" ]; then
-    echo "${FMT_YELLOW}The \$ZSH folder already exists ($ZSH).${FMT_RESET}"
+    echo "${FMT_YELLOW}\$ZSH klasörü zaten mevcut ($ZSH).${FMT_RESET}"
     if [ "$custom_zsh" = yes ]; then
       cat <<EOF
 
-You ran the installer with the \$ZSH setting or the \$ZSH variable is
-exported. You have 3 options:
+Yükleyiciyi \$ZSH ayarıyla çalıştırdınız veya \$ZSH değişkeni 
+dışa aktarıldı. 3 seçeneğiniz var:
 
-1. Unset the ZSH variable when calling the installer:
+1. Yükleyiciyi çağırırken ZSH değişkeninin ayarını kaldırın:
    $(fmt_code "ZSH= sh install.sh")
-2. Install Oh My Zsh to a directory that doesn't exist yet:
+2. Oh My Zsh'ı henüz var olmayan bir dizine yükleyin:
    $(fmt_code "ZSH=path/to/new/ohmyzsh/folder sh install.sh")
-3. (Caution) If the folder doesn't contain important information,
-   you can just remove it with $(fmt_code "rm -r $ZSH")
+3. (Dikkat) Eğer klasör önemli bilgiler içermiyorsa, onu $(fmt_code "rm -r $ZSH") 
+   ile kaldırabilirsiniz.
 
 EOF
     else
-      echo "You'll need to remove it if you want to reinstall."
+      echo "Yeniden yüklemek istiyorsanız kaldırmanız gerekir."
     fi
     exit 1
   fi
@@ -513,7 +515,7 @@ EOF
   print_success
 
   if [ $RUNZSH = no ]; then
-    echo "${FMT_YELLOW}Run zsh to try it out.${FMT_RESET}"
+    echo "${FMT_YELLOW}Denemek için zsh'yi çalıştırın.${FMT_RESET}"
     exit
   fi
 

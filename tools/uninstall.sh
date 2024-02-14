@@ -1,40 +1,40 @@
-read -r -p "Are you sure you want to remove Oh My Zsh? [y/N] " confirmation
+read -r -p "Oh My Zsh'yi kaldırmak istediğinizden emin misiniz? [y/N] " confirmation
 if [ "$confirmation" != y ] && [ "$confirmation" != Y ]; then
-  echo "Uninstall cancelled"
+  echo "Kaldırma işlemi iptal edildi"
   exit
 fi
 
-echo "Removing ~/.oh-my-zsh"
+echo "~/.oh-my-zsh kaldırılıyor"
 if [ -d ~/.oh-my-zsh ]; then
   rm -rf ~/.oh-my-zsh
 fi
 
 if [ -e ~/.zshrc ]; then
   ZSHRC_SAVE=~/.zshrc.omz-uninstalled-$(date +%Y-%m-%d_%H-%M-%S)
-  echo "Found ~/.zshrc -- Renaming to ${ZSHRC_SAVE}"
+  echo "~/.zshrc bulundu -- Şu şekilde adlandırılıyor: ${ZSHRC_SAVE}"
   mv ~/.zshrc "${ZSHRC_SAVE}"
 fi
 
-echo "Looking for original zsh config..."
+echo "Orijinal zsh config aranıyor..."
 ZSHRC_ORIG=~/.zshrc.pre-oh-my-zsh
 if [ -e "$ZSHRC_ORIG" ]; then
-  echo "Found $ZSHRC_ORIG -- Restoring to ~/.zshrc"
+  echo "$ZSHRC_ORIG bulundu -- ~/.zshrc dosyasına adlandırılıyor..."
   mv "$ZSHRC_ORIG" ~/.zshrc
-  echo "Your original zsh config was restored."
+  echo "Orijinal zsh config geri yüklendi."
 else
-  echo "No original zsh config found"
+  echo "Orijinal zsh config bulunamadı."
 fi
 
 if hash chsh >/dev/null 2>&1 && [ -f ~/.shell.pre-oh-my-zsh ]; then
   old_shell=$(cat ~/.shell.pre-oh-my-zsh)
-  echo "Switching your shell back to '$old_shell':"
+  echo "Eski shelle \('$old_shell'\) geri dönülüyor:"
   if chsh -s "$old_shell"; then
     rm -f ~/.shell.pre-oh-my-zsh
   else
-    echo "Could not change default shell. Change it manually by running chsh"
-    echo "or editing the /etc/passwd file."
+    echo "Varsayılan kabuk değiştirilemedi. chsh'yi çalıştırıp manuel olarak değiştirin"
+    echo "veya /etc/passwd dosyasını düzenleyin."
   fi
 fi
 
-echo "Thanks for trying out Oh My Zsh. It's been uninstalled."
-echo "Don't forget to restart your terminal!"
+echo "Oh My Zsh'yi denediğiniz için teşekkür ederiz. Başarıyla kaldırıldı."
+echo "Terminalinizi yeniden başlatmayı unutmayın!"
