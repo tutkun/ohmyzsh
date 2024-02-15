@@ -1,15 +1,16 @@
 ## Standards checklist:
 
-<!-- Fill with an x the ones that apply. Example: [x] -->
+<!-- Geçerli olanları x ile doldurun. Örnek: [x] -->
 
-- [ ] The PR title is descriptive.
-- [ ] The PR doesn't replicate another PR which is already open.
-- [ ] I have read the contribution guide and followed all the instructions.
-- [ ] The code follows the code style guide detailed in the wiki.
-- [ ] The code is mine or it's from somewhere with an MIT-compatible license.
-- [ ] The code is efficient, to the best of my ability, and does not waste computer resources.
-- [ ] The code is stable and I have tested it myself, to the best of my abilities.
-- [ ] If the code introduces new aliases, I provide a valid use case for all plugin users down below.
+- [ ] PR başlığı açıklayıcıdır.
+- [ ] PR, zaten açık olan başka bir PR'yi kopyalamaz.
+- [ ] Katkı kılavuzunu okudum ve tüm talimatları takip ettim.
+- [ ] Kod, wiki'de ayrıntıları verilen kod stili kılavuzunu takip eder.
+- [ ] Kod bana ait veya MIT uyumlu lisansa sahip bir yerden.
+- [ ] Kod elinden geldiğince performanslı ve bilgisayar kaynaklarını boşa harcamaz.
+- [ ] Kod kararlı ve elimden geldiğince kendim test ettim.
+- [ ] Eğer kod yeni takma adlar getiriyorsa, aşağıda tüm eklenti kullanıcıları için geçerli bir kullanım
+      örneği sunacağım.
 
 ## Changes:
 

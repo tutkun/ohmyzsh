@@ -21,7 +21,7 @@ jobs:
   tests:
     name: Run tests
     runs-on: ${{ matrix.os }}
-    if: github.repository == 'tutkun/ohmyzsh'
+    if: github.repository == 'ohmyzsh/ohmyzsh'
     strategy:
       matrix:
         os: [ubuntu-latest]
