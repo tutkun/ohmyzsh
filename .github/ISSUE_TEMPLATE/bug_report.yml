@@ -5,7 +5,7 @@ body:
     attributes:
       value: |
         ## Self Check
-        - Look for similar errors in existing [GitHub Issues](https://github.com/ohmyzsh/ohmyzsh/issues?q=is%3Aissue) (open or closed).
+        - Look for similar errors in existing [GitHub Issues](https://github.com/tutkun/ohmyzsh/issues?q=is%3Aissue) (open or closed).
         - Try reaching out on the [Discord server](https://discord.gg/ohmyzsh) for help.
   - type: textarea
     validations:
@@ -65,4 +65,5 @@ body:
   - type: textarea
     attributes:
       label: Additional context
-      description: Add any other context about the problem here. This can be themes, plugins, custom settings...
+      description:
+        Add any other context about the problem here. This can be themes, plugins, custom settings...

@@ -12,24 +12,14 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # MY THEMES:
-# ZSH_THEME="wezm+"
-# ZSH_THEME="agnoster" # arkaplanı renkli satır
-# ZSH_THEME="amuse" # ~/path on  master! ⌚ 14:21:59
-# ZSH_THEME="suvash" # ╭─tutkun at MacBook-Pro in ~/.oh-my-zsh on master!
-# ZSH_THEME="sunrise" # --- ~/.oh-my-zsh ‹master* ?› » 
-# ZSH_THEME="norm" # λ MacBook-Pro .oh-my-zsh → λ git master* →
-# ZSH_THEME="strug" # ╭─tutkun@MacBook-Pro in ~/.oh-my-zsh on master ✘ (origin/master -77)
-# ZSH_THEME="jnrowe" # Ξ ~/.oh-my-zsh git:(master) ▶ 
-# ZSH_THEME="nebirhos" # @MacBook-Pro ➜ .oh-my-zsh git:(master) ✗ 
-# ZSH_THEME="wedisagree" # [~/path] <--sol---||||---sağ--> 14:22:41  ☁  master ☂ ✭
-ZSH_THEME="daveverwer" # MacBookPro:.oh-my-zsh (master) $
+ZSH_THEME="daveverwer" # set by `omz`
 
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "avit" "af-magic" "daveverwer" "mikeh" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -114,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Android Studio için JAVA_HOME tanımlaması:
-export JAVA_HOME=/usr/libexec/java_home -v 19
+# export JAVA_HOME=/usr/libexec/java_home
 
 # Node@18
 export PATH="/usr/local/opt/node@18/bin:$PATH"

@@ -191,12 +191,8 @@ git remote -v | while read remote url extra; do
     git remote set-url "$remote" "https://github.com/tutkun/ohmyzsh.git" ;;
   git@github.com:robbyrussell/oh-my-zsh(|.git))
     git remote set-url "$remote" "git@github.com:tutkun/ohmyzsh.git" ;;
-  https://github.com/ohmyzsh/ohmyzsh(|.git))
-    # Bu sonradan eklendi, normalde yoktu: sadece case var.
-    git remote set-url "$remote" "git@github.com:tutkun/ohmyzsh.git" ;;
-  git@github.com:ohmyzsh/ohmyzsh(|.git))
-    # Bu sonradan eklendi, normalde yoktu: sadece case var.
-    git remote set-url "$remote" "git@github.com:tutkun/ohmyzsh.git" ;;
+  https://github.com/tutkun/ohmyzsh(|.git)) ;;
+  git@github.com:tutkun/ohmyzsh(|.git)) ;;
   *) continue ;;
   esac
 
