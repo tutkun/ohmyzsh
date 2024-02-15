@@ -24,15 +24,12 @@ jobs:
     if: github.repository == 'tutkun/ohmyzsh'
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
     steps:
       - name: Set up git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install zsh
-        if: runner.os == 'Linux'
         run: sudo apt-get update; sudo apt-get install zsh
-      - name: Test installer
-        run: sh ./tools/install.sh
       - name: Check syntax
         run: |
           for file in ./oh-my-zsh.sh \

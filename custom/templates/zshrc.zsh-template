@@ -117,9 +117,43 @@ source $ZSH/oh-my-zsh.sh
 export JAVA_HOME=/usr/libexec/java_home -v 19
 
 # Node@18
-export PATH="/usr/local/opt/node@18/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/node@18/lib"
 export CPPFLAGS="-I/usr/local/opt/node@18/include"
+export PATH="/usr/local/opt/node@18/bin:$PATH"
+
+# Brew intell mac için:
+export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+
+# Flutter SDK Yolunu Belirtiyoruz:
+export PATH="$PATH:$HOME/flutter-sdk/bin:$HOME/.pub-cache/bin"
+
+# Yarn using
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Visual Studio Code (code)
+export PATH="$PATH:/Applications/Code.app/Contents/Resources/app/bin"
+
+# Pnpm
+export PNPM_HOME="$HOME/.pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# Pnpm End
+
+# Ninja adlı vscode plugin için
+PATH=~/.console-ninja/.bin:$PATH
+
+# Ruby güncelleme vs kontrolü için rbenv yükleniyor
+eval "$(~/.rbenv/bin/rbenv init - zsh)"
+
+# Bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# Jekyll için Ruby Kurulum Ayarları:
+# source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
+# source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
+# chruby ruby
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -140,37 +174,8 @@ export CPPFLAGS="-I/usr/local/opt/node@18/include"
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 
-# Pnpm
-export PNPM_HOME="$HOME/.pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# Pnpm End
-
-# Yarn using
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# Bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# Ninja adlı vscode plugin için
-PATH=~/.console-ninja/.bin:$PATH
-
-# Flutter SDK Yolunu Belirtiyoruz:
-export PATH="$PATH:$HOME/flutter-sdk/bin:$HOME/.pub-cache/bin"
-
 # flutter create --org com.newcompany --project-name newproject .
 alias create-new-flutter-project="flutter create --org com.tutkuns.apps --project-name "
-
-# Visual Studio Code (code)
-export PATH="$PATH:/Applications/Code.app/Contents/Resources/app/bin"
-
-# Jekyll için Ruby Kurulum Ayarları:
-# source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
-# source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
-# chruby ruby
-
 
 # HELPER FUNCTIONS:
 # =================

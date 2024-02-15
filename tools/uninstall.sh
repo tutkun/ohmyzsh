@@ -1,3 +1,15 @@
+if hash chsh >/dev/null 2>&1 && [ -f ~/.shell.pre-oh-my-zsh ]; then
+  old_shell=$(cat ~/.shell.pre-oh-my-zsh)
+  echo "Shelle ('$old_shell') geri dönülüyor:"
+  if chsh -s "$old_shell"; then
+    rm -f ~/.shell.pre-oh-my-zsh
+  else
+    echo "Varsayılan shell değiştirilemedi. chsh çalıştırarak manuel olarak değiştirin"
+    echo "veya /etc/passwd dosyasını düzenleyin."
+    exit
+  fi
+fi
+
 read -r -p "Oh My Zsh'yi kaldırmak istediğinizden emin misiniz? [y/N] " confirmation
 if [ "$confirmation" != y ] && [ "$confirmation" != Y ]; then
   echo "Kaldırma işlemi iptal edildi"
@@ -23,17 +35,6 @@ if [ -e "$ZSHRC_ORIG" ]; then
   echo "Orijinal zsh config geri yüklendi."
 else
   echo "Orijinal zsh config bulunamadı."
-fi
-
-if hash chsh >/dev/null 2>&1 && [ -f ~/.shell.pre-oh-my-zsh ]; then
-  old_shell=$(cat ~/.shell.pre-oh-my-zsh)
-  echo "Eski shelle \('$old_shell'\) geri dönülüyor:"
-  if chsh -s "$old_shell"; then
-    rm -f ~/.shell.pre-oh-my-zsh
-  else
-    echo "Varsayılan kabuk değiştirilemedi. chsh'yi çalıştırıp manuel olarak değiştirin"
-    echo "veya /etc/passwd dosyasını düzenleyin."
-  fi
 fi
 
 echo "Oh My Zsh'yi denediğiniz için teşekkür ederiz. Başarıyla kaldırıldı."
