@@ -323,6 +323,13 @@ setup_ohmyzsh() {
   echo
 }
 
+# Bu if'i ekledim. Bu sayede custom'daki template dosyası öncelikli olacak
+copy_custom_template() {
+  if [ -e "$ZSH_CUSTOM/templates/zshrc.zsh-template" ]; then
+    cp "$ZSH_CUSTOM/templates/zshrc.zsh-template" "$ZSH/templates/zshrc.zsh-template"
+  fi
+}
+
 setup_zshrc() {
   # Keep most recent old .zshrc at .zshrc.pre-oh-my-zsh, and older ones
   # with datestamp of installation that moved them aside, so we never actually
@@ -361,10 +368,10 @@ setup_zshrc() {
     omz=$(echo "$omz" | sed "s|^$ZDOTDIR/|\$ZDOTDIR/|")
   fi
   omz=$(echo "$omz" | sed "s|^$HOME/|\$HOME/|")
-  # Bu if'i ekledim. Bu sayede custom'daki template dosyası öncelikli olacak
-  if [ -e "$ZSH/custom/templates/zshrc.zsh-template" ]; then
-    cp "$ZSH/custom/templates/zshrc.zsh-template" "$ZSH/templates/zshrc.zsh-template"
-  fi
+  
+  # Bu metodu ekledim. Bu sayede custom'daki template dosyası öncelikli olacak
+  copy_custom_template
+
   sed "s|^export ZSH=.*$|export ZSH=\"${omz}\"|" "$ZSH/templates/zshrc.zsh-template" > "$zdot/.zshrc-omztemp"
   mv -f "$zdot/.zshrc-omztemp" "$zdot/.zshrc"
 
