@@ -19,7 +19,7 @@ fi
 # time
 function real_time() {
     local color="%{$fg_no_bold[cyan]%}";                    # color in PROMPT need format in %{XXX%} which is not same with echo
-    local time="[$(date +%H:%M:%S)]";
+    local time="[$(date +'%A %H:%M:%S')]";
     local color_reset="%{$reset_color%}";
     echo "${color}${time}${color_reset}";
 }
@@ -117,7 +117,7 @@ output_command_execute_after() {
     cmd="${color_cmd}${cmd}${color_reset}"
 
     # time
-    local time="[$(date +%H:%M:%S)]"
+    local time="[$(date +'%A %H:%M:%S')]";
     local color_time="$fg_no_bold[cyan]";
     time="${color_time}${time}${color_reset}";
 
