@@ -118,26 +118,11 @@ function _zsh_tmux_plugin_run() {
   [[ "$ZSH_TMUX_ITERM2" == "true" ]] && tmux_cmd+=(-CC)
   [[ "$ZSH_TMUX_UNICODE" == "true" ]] && tmux_cmd+=(-u)
 
-  local _detached=""
-  [[ "$ZSH_TMUX_DETACHED" == "true" ]] && _detached="-d"
-
-  local session_name
-  if [[ "$ZSH_TMUX_AUTONAME_SESSION" == "true" ]]; then
-    # Name the session after the basename of the current directory
-    session_name=${PWD##*/}
-    # If the current directory is the home directory, name it 'HOME'
-    [[ "$PWD" == "$HOME" ]] && session_name="HOME"
-    # If the current directory is the root directory, name it 'ROOT'
-    [[ "$PWD" == "/" ]] && session_name="ROOT"
-  else
-      session_name="$ZSH_TMUX_DEFAULT_SESSION_NAME"
-  fi
-
   # Try to connect to an existing session.
-  if [[ -n "$session_name" ]]; then
-    [[ "$ZSH_TMUX_AUTOCONNECT" == "true" ]] && $tmux_cmd attach $_detached -t "$session_name"
+  if [[ -n "$ZSH_TMUX_DEFAULT_SESSION_NAME" ]]; then
+    [[ "$ZSH_TMUX_AUTOCONNECT" == "true" ]] && $tmux_cmd attach ${ZSH_TMUX_DETACHED:+"-d"} -t $ZSH_TMUX_DEFAULT_SESSION_NAME
   else
-    [[ "$ZSH_TMUX_AUTOCONNECT" == "true" ]] && $tmux_cmd attach $_detached
+    [[ "$ZSH_TMUX_AUTOCONNECT" == "true" ]] && $tmux_cmd attach ${ZSH_TMUX_DETACHED:+"-d"}
   fi
 
   # If failed, just run tmux, fixing the TERM variable if requested.
