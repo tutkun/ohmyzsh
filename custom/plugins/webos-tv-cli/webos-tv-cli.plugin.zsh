@@ -2,7 +2,7 @@
 # here will override ones with the same name in the main plugins directory.
 
 # webOS TV için SDK yapılandırmaları
-# export LG_WEBOS_TV_SDK_HOME="$HOME/Developer/webOS_TV_SDK"
+export LG_WEBOS_TV_SDK_HOME="$HOME/Developer/webOS_TV_SDK"
 
 # if [ -d "$LG_WEBOS_TV_SDK_HOME/CLI/bin" ]; then
 #   # echo "\n\e[31mUYARI:\e[m" "\t\e[31m$1\e[m \e[32mdizini zaten mevcut. Bu işlem dizindeki verileri korumak için durduruldu.\e[m\n" "\t\e[34m$DIR/\e[31m$1\e[m\e[m\n"
