@@ -1,12 +1,6 @@
 # .NET için telemetri takibini önle:
 DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
-# Nushell için ayarlar
-export XDG_CONFIG_HOME=${HOME}/.config
-
 # eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # If you come from bash you might have to change your $PATH.
@@ -168,9 +162,14 @@ export VSCODE_EDITOR=/Applications/Code.app/Contents/Resources/app/bin
 export REACT_EDITOR="code"
 export PATH=$PATH:$VSCODE_EDITOR
 
-# Podman Configurations
-# export CONTAINERS_MACHINE_PROVIDER=libkrun
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+PATH=~/.console-ninja/.bin:$PATH
 
 # ==============================================================================
 # HELPER :
@@ -187,18 +186,6 @@ export PATH=$PATH:$VSCODE_EDITOR
 # Example aliases
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
-
-# flutter create --org com.newcompany --project-name newproject .
-# alias flutter-create-project="flutter create --org=com.tutkuns.apps --platforms='ios,android' --template=app -e --project-name "
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-PATH=~/.console-ninja/.bin:$PATH
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
