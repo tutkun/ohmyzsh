@@ -453,7 +453,7 @@ function display-release {
     # If we reach here we have shown commits, set flag
     shown_commits=1
 
-    fmt:header "Other changes" 3
+    fmt:header "Diğer değişiklikler" 3
     for hash type in ${(kv)changes}; do
       case "$type" in
       other) echo " - $(fmt:hash) $(fmt:scope)$(fmt:subject)" ;;
