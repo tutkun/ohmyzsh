@@ -200,7 +200,7 @@ function handle_update() {
 
     # Test if Oh My Zsh directory is a git repository
     if ! (builtin cd -q "$ZSH" && LANG= git rev-parse &>/dev/null); then
-      echo >&2 "[oh-my-zsh] Güncellenmedi: Bir git repository değil."
+      echo >&2 "[oh-my-zsh] güncellenemedi: Bu bir git repository değil."
       return
     fi
 

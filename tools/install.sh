@@ -229,7 +229,7 @@ fmt_code() {
 }
 
 fmt_error() {
-  printf '%sError: %s%s\n' "${FMT_BOLD}${FMT_RED}" "$*" "$FMT_RESET" >&2
+  printf '%sHata: %s%s\n' "${FMT_BOLD}${FMT_RED}" "$*" "$FMT_RESET" >&2
 }
 
 setup_color() {
@@ -314,7 +314,7 @@ setup_ohmyzsh() {
       rm -rf "$ZSH" 2>/dev/null
     }
     # fmt_error "git clone of oh-my-zsh repo failed"
-    fmt_error "oh-my-zsh deposunun git klonu başarısız oldu"
+    fmt_error "oh-my-zsh deposu için git clon başarısız oldu"
     exit 1
   }
   # Exit installation directory
@@ -368,7 +368,7 @@ setup_zshrc() {
     omz=$(echo "$omz" | sed "s|^$ZDOTDIR/|\$ZDOTDIR/|")
   fi
   omz=$(echo "$omz" | sed "s|^$HOME/|\$HOME/|")
-  
+
   # Bu metodu ekledim. Bu sayede custom'daki template dosyası öncelikli olacak
   copy_custom_template
 
