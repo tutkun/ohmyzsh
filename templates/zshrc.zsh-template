@@ -1,7 +1,7 @@
 # .NET için telemetri takibini önle:
 DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-# eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -116,9 +116,6 @@ source $ZSH/oh-my-zsh.sh
 eval "$(starship init zsh)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
-
-# Brew intell mac için:
-# export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
 # Python pyenv shims:
 export PATH=$(pyenv root)/shims:$PATH
