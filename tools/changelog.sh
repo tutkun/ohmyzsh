@@ -439,7 +439,7 @@ function display-release {
     # If no commits found under "other" types, don't display anything
     (( $#changes != 0 )) || return 0
 
-    fmt:header "Other changes" 3
+    fmt:header "Diğer değişiklikler" 3
     for hash type in ${(kv)changes}; do
       case "$type" in
       other) echo " - $(fmt:hash) $(fmt:scope)$(fmt:subject)" ;;
