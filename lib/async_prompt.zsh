@@ -3,11 +3,10 @@
 # https://github.com/woefe/git-prompt.zsh/blob/master/git-prompt.zsh
 
 zmodload zsh/system
-autoload -Uz is-at-least
 
 # For now, async prompt function handlers are set up like so:
-# First, define the async function handler and register the handler
-# with _omz_register_handler:
+# First, define the async function handler and add the function name
+# to the _omz_async_functions array:
 #
 #  function _git_prompt_status_async {
 #    # Do some expensive operation that outputs to stdout
@@ -18,7 +17,7 @@ autoload -Uz is-at-least
 # which will show the output of "$_OMZ_ASYNC_OUTPUT[handler_name]":
 #
 #  function git_prompt_status {
-#    echo -n $_OMZ_ASYNC_OUTPUT[_git_prompt_status_async]
+#    echo -n $_OMZ_ASYNC_OUTPUT[_git_prompt_status]
 #  }
 #
 #  RPROMPT='$(git_prompt_status)'
@@ -26,7 +25,7 @@ autoload -Uz is-at-least
 # This API is subject to change and optimization. Rely on it at your own risk.
 
 function _omz_register_handler {
-  setopt localoptions noksharrays unset
+  setopt localoptions noksharrays
   typeset -ga _omz_async_functions
   # we want to do nothing if there's no $1 function or we already set it up
   if [[ -z "$1" ]] || (( ! ${+functions[$1]} )) \
@@ -44,8 +43,6 @@ function _omz_register_handler {
 
 # Set up async handlers and callbacks
 function _omz_async_request {
-  setopt localoptions noksharrays unset
-  local -i ret=$?
   typeset -gA _OMZ_ASYNC_FDS _OMZ_ASYNC_PIDS _OMZ_ASYNC_OUTPUT
 
   # executor runs a subshell for all async requests based on key
@@ -84,8 +81,8 @@ function _omz_async_request {
     exec {fd}< <(
       # Tell parent process our PID
       builtin echo ${sysparams[pid]}
-      # Set exit code for the handler if used
-      () { return $ret }
+      # Store handler name for callback
+      builtin echo $handler
       # Run the async function handler
       $handler
     )
@@ -95,11 +92,11 @@ function _omz_async_request {
 
     # There's a weird bug here where ^C stops working unless we force a fork
     # See https://github.com/zsh-users/zsh-autosuggestions/issues/364
-    # and https://github.com/zsh-users/zsh-autosuggestions/pull/612
-    is-at-least 5.8 || command true
+    command true
 
     # Save the PID from the handler child process
-    read -u $fd "_OMZ_ASYNC_PIDS[$handler]"
+    read pid <&$fd
+    _OMZ_ASYNC_PIDS[$handler]=$pid
 
     # When the fd is readable, call the response handler
     zle -F "$fd" _omz_async_callback
@@ -114,18 +111,19 @@ function _omz_async_callback() {
   local err=$2  # Second arg will be passed in case of error
 
   if [[ -z "$err" || "$err" == "hup" ]]; then
-    # Get handler name from fd
-    local handler="${(k)_OMZ_ASYNC_FDS[(r)$fd]}"
+    # Get handler name from first line
+    local handler
+    read handler <&$fd
 
     # Store old output which is supposed to be already printed
     local old_output="${_OMZ_ASYNC_OUTPUT[$handler]}"
 
     # Read output from fd
-    IFS= read -r -u $fd -d '' "_OMZ_ASYNC_OUTPUT[$handler]"
+    _OMZ_ASYNC_OUTPUT[$handler]="$(cat <&$fd)"
 
     # Repaint prompt if output has changed
     if [[ "$old_output" != "${_OMZ_ASYNC_OUTPUT[$handler]}" ]]; then
-      zle .reset-prompt
+      zle reset-prompt
       zle -R
     fi
 
@@ -140,6 +138,3 @@ function _omz_async_callback() {
   _OMZ_ASYNC_FDS[$handler]=-1
   _OMZ_ASYNC_PIDS[$handler]=-1
 }
-
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd _omz_async_request
