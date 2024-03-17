@@ -167,4 +167,4 @@ alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 
 # flutter create --org com.newcompany --project-name newproject .
-alias create-new-flutter-project="flutter create --org com.tutkuns.apps --project-name "
+alias flutter-create-project="flutter create --org=com.tutkuns.apps --platforms='ios,android' --template=app -e --project-name "
