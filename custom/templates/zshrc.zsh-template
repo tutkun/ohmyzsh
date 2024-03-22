@@ -143,6 +143,7 @@ export PATH=$GEM_HOME/ruby/3.3.0/bin:$PATH
 
 # Flutter SDK Yolunu Belirtiyoruz:
 export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin
 export FLUTTER_ROOT=$HOME/Developer/flutter-sdk
 export PATH=$PATH:$FLUTTER_ROOT/bin:$HOME/.pub-cache/bin
 
