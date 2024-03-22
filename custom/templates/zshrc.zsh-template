@@ -132,11 +132,10 @@ esac
 # Yarn using
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-# ! /usr/libexec/java_home --help komutu ile java_home'un yolunu öğrenebilirsiniz.
-# Android Studio için JAVA_HOME tanımlaması:
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
-# export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jbr/Contents/Home/bin/java
-export JAVA_HOME=$HOME/.sdkman/candidates/java/11.0.14.1-jbr
+#! Gelistiricilere ozel kutuphane SdkMan!
+# Java versiyonu ayarlama komutu: "sdk home java 17.0.10-jbr"
+# Java versiyonlarini listeleme: "sdk list"
+export JAVA_HOME=$HOME/.sdkman/candidates/java/current
 
 # Flutter ve Ruby için gem home ve path tanımlaması:
 export GEM_HOME=$HOME/.gem
