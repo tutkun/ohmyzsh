@@ -137,13 +137,15 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # Java versiyonlarini listeleme: "sdk list"
 export JAVA_HOME=$HOME/.sdkman/candidates/java/current
 
+# Android SDK Yolunu Belirtiyoruz:
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$ANDROID_HOME/cmdline-tools/latest/bin
+
 # Flutter ve Ruby için gem home ve path tanımlaması:
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/ruby/3.3.0/bin:$PATH
 
 # Flutter SDK Yolunu Belirtiyoruz:
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin
 export FLUTTER_ROOT=$HOME/Developer/flutter-sdk
 export PATH=$PATH:$FLUTTER_ROOT/bin:$HOME/.pub-cache/bin
 
@@ -175,3 +177,7 @@ alias flutter-create-project="flutter create --org=com.tutkuns.apps --platforms=
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
