@@ -21,12 +21,11 @@ This plugin supplies one command, `jira`, through which all its features are exp
 `jira help` or `jira usage` will print the below usage instructions
 
 | Command                       | Description                                              |
-| :---------------------------- | :------------------------------------------------------- |
+|:------------------------------|:---------------------------------------------------------|
 | `jira`                        | Performs the default action                              |
 | `jira new`                    | Opens a new Jira issue dialogue                          |
 | `jira ABC-123`                | Opens an existing issue                                  |
 | `jira ABC-123 m`              | Opens an existing issue for adding a comment             |
-| `jira project ABC`            | Opens JIRA project summary                               |
 | `jira dashboard [rapid_view]` | Opens your JIRA dashboard                                |
 | `jira mine`                   | Queries for your own issues                              |
 | `jira tempo`                  | Opens your JIRA Tempo                                    |
@@ -34,7 +33,6 @@ This plugin supplies one command, `jira`, through which all its features are exp
 | `jira assigned [username]`    | Queries for issues assigned to a user                    |
 | `jira branch`                 | Opens an existing issue matching the current branch name |
 | `jira help`                   | Prints usage instructions                                |
-
 
 ### Jira Branch usage notes
 
@@ -47,6 +45,7 @@ This is also checks if the prefix is in the name, and adds it if not, so: "MP-12
 If your branch naming convention deviates, you can overwrite the jira_branch function to determine and echo the Jira issue key yourself.
 Define a function `jira_branch` after sourcing `oh-my-zsh.sh` in your `.zshrc`.
 Example:
+
 ```zsh
 # Determine branch name from naming convention 'type/KEY-123/description'.
 function jira_branch() {
@@ -60,7 +59,6 @@ function jira_branch() {
   echo $issue_arg
 }
 ```
-
 
 #### Debugging usage
 
@@ -96,7 +94,6 @@ echo "https://jira.atlassian.com" >> .jira-url
 * `$JIRA_RAPID_VIEW` - Set the default rapid view; it doesn't work if `$JIRA_RAPID_BOARD` is set to false
 * `$JIRA_DEFAULT_ACTION` - Action to do when `jira` is called with no arguments; defaults to "new"
 * `$JIRA_TEMPO_PATH` - Your JIRA tempo url path; defaults to "/secure/Tempo.jspa"
-
 
 ### Browser
 
