@@ -3,7 +3,7 @@
 This plugin prompts the status of the Vagrant VMs. It supports single-host and
 multi-host configurations as well.
 
-To use it, add `vagrant-prompt` to the plugins array in your zshrc file:
+Look inside the source for documentation about custom variables.
 
 ```zsh
 plugins=(... vagrant-prompt)
@@ -42,7 +42,7 @@ The plugin uses the output reported by `vagrant status` to print whichever symbo
 according to the following table:
 
 | State       | Symbol                                 |
-| ----------- | -------------------------------------- |
+|-------------|----------------------------------------|
 | running     | `ZSH_THEME_VAGRANT_PROMPT_RUNNING`     |
 | not running | `ZSH_THEME_VAGRANT_PROMPT_POWEROFF`    |
 | poweroff    | `ZSH_THEME_VAGRANT_PROMPT_POWEROFF`    |
