@@ -153,7 +153,10 @@ export PATH=$PATH:$FLUTTER_ROOT/bin:$HOME/.pub-cache/bin
 export CHROME_EXECUTABLE=/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
 
 # Visual Studio Code (code)
-export PATH=$PATH:/Applications/Code.app/Contents/Resources/app/bin
+export VSCODE_EDITOR=/Applications/Code.app/Contents/Resources/app/bin
+export REACT_EDITOR=VSCODE_EDITOR
+
+export PATH=$PATH:$VSCODE_EDITOR
 
 
 # ==============================================================================
