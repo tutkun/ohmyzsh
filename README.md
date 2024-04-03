@@ -26,40 +26,41 @@ Twitter), and join us on [Discord](https://discord.gg/ohmyzsh).
 <details>
 <summary>Table of Contents</summary>
 
-- [Getting Started](#getting-started)
-  - [Operating System Compatibility](#operating-system-compatibility)
-  - [Prerequisites](#prerequisites)
-  - [Basic Installation](#basic-installation)
-    - [Manual Inspection](#manual-inspection)
-- [Using Oh My Zsh](#using-oh-my-zsh)
-  - [Plugins](#plugins)
-    - [Enabling Plugins](#enabling-plugins)
-    - [Using Plugins](#using-plugins)
-  - [Themes](#themes)
-    - [Selecting A Theme](#selecting-a-theme)
-  - [FAQ](#faq)
-- [Advanced Topics](#advanced-topics)
-  - [Advanced Installation](#advanced-installation)
-    - [Custom Directory](#custom-directory)
-    - [Unattended Install](#unattended-install)
-    - [Installing From A Forked Repository](#installing-from-a-forked-repository)
-    - [Manual Installation](#manual-installation)
-  - [Installation Problems](#installation-problems)
-  - [Custom Plugins And Themes](#custom-plugins-and-themes)
-  - [Enable GNU ls In macOS And freeBSD Systems](#enable-gnu-ls-in-macos-and-freebsd-systems)
-  - [Skip Aliases](#skip-aliases)
-  - [Async git prompt](#async-git-prompt)
-- [Getting Updates](#getting-updates)
-  - [Updates Verbosity](#updates-verbosity)
-  - [Manual Updates](#manual-updates)
-- [Uninstalling Oh My Zsh](#uninstalling-oh-my-zsh)
-- [How Do I Contribute To Oh My Zsh?](#how-do-i-contribute-to-oh-my-zsh)
-  - [Do Not Send Us Themes](#do-not-send-us-themes)
-- [Contributors](#contributors)
-- [Follow Us](#follow-us)
-- [Merchandise](#merchandise)
-- [License](#license)
-- [About Planet Argon](#about-planet-argon)
+1. [Getting Started](#getting-started)
+   1. [Operating System Compatibility](#operating-system-compatibility)
+   2. [Prerequisites](#prerequisites)
+   3. [Basic Installation](#basic-installation)
+      1. [Manual Inspection](#manual-inspection)
+2. [Using Oh My Zsh](#using-oh-my-zsh)
+   1. [Plugins](#plugins)
+      1. [Enabling Plugins](#enabling-plugins)
+      2. [Using Plugins](#using-plugins)
+   2. [Themes](#themes)
+      1. [Selecting A Theme](#selecting-a-theme)
+   3. [FAQ](#faq)
+3. [Advanced Topics](#advanced-topics)
+   1. [Advanced Installation](#advanced-installation)
+      1. [Custom Directory](#custom-directory)
+      2. [Unattended Install](#unattended-install)
+      3. [Installing From A Forked Repository](#installing-from-a-forked-repository)
+      4. [Manual Installation](#manual-installation)
+   2. [Installation Problems](#installation-problems)
+   3. [Custom Plugins And Themes](#custom-plugins-and-themes)
+   4. [Enable GNU ls In macOS And freeBSD Systems](#enable-gnu-ls-in-macos-and-freebsd-systems)
+   5. [Skip Aliases](#skip-aliases)
+   6. [Disable async git prompt](#disable-async-git-prompt)
+   7. [Async git prompt](#async-git-prompt)
+4. [Getting Updates](#getting-updates)
+   1. [Updates Verbosity](#updates-verbosity)
+   2. [Manual Updates](#manual-updates)
+5. [Uninstalling Oh My Zsh](#uninstalling-oh-my-zsh)
+6. [How Do I Contribute To Oh My Zsh?](#how-do-i-contribute-to-oh-my-zsh)
+   1. [Do Not Send Us Themes](#do-not-send-us-themes)
+7. [Contributors](#contributors)
+8. [Follow Us](#follow-us)
+9. [Merchandise](#merchandise)
+10. [License](#license)
+11. [About Planet Argon](#about-planet-argon)
 
 </details>
 
@@ -68,14 +69,14 @@ Twitter), and join us on [Discord](https://discord.gg/ohmyzsh).
 ### Operating System Compatibility
 
 | O/S            | Status |
-| :------------- | :----: |
-| Android        |   ✅   |
-| freeBSD        |   ✅   |
-| LCARS          |   🛸   |
-| Linux          |   ✅   |
-| macOS          |   ✅   |
-| OS/2 Warp      |   ❌   |
-| Windows (WSL2) |   ✅   |
+|:---------------|:------:|
+| Android        |   ✅    |
+| freeBSD        |   ✅    |
+| LCARS          |   🛸    |
+| Linux          |   ✅    |
+| macOS          |   ✅    |
+| OS/2 Warp      |   ❌    |
+| Windows (WSL2) |   ✅    |
 
 ### Prerequisites
 
@@ -91,7 +92,7 @@ Oh My Zsh is installed by running one of the following commands in your terminal
 command-line with either `curl`, `wget` or another similar tool.
 
 | Method    | Command                                                                                           |
-| :-------- | :------------------------------------------------------------------------------------------------ |
+|:----------|:--------------------------------------------------------------------------------------------------|
 | **curl**  | `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` |
 | **wget**  | `sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`   |
 | **fetch** | `sh -c "$(fetch -o - https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` |
@@ -100,7 +101,7 @@ Alternatively, the installer is also mirrored outside GitHub. Using this URL ins
 in a country like China or India (for certain ISPs), that blocks `raw.githubusercontent.com`:
 
 | Method    | Command                                           |
-| :-------- | :------------------------------------------------ |
+|:----------|:--------------------------------------------------|
 | **curl**  | `sh -c "$(curl -fsSL https://install.ohmyz.sh/)"` |
 | **wget**  | `sh -c "$(wget -O- https://install.ohmyz.sh/)"`   |
 | **fetch** | `sh -c "$(fetch -o - https://install.ohmyz.sh/)"` |
@@ -404,6 +405,17 @@ Instead, you can now use the following:
 
 ```sh
 zstyle ':omz:lib:directories' aliases no
+```
+
+### Disable async git prompt
+
+Async prompt functions are an experimental feature (included on April 3, 2024) that allows Oh My Zsh to render prompt information
+asyncronously. This can improve prompt rendering performance, but it might not work well with some setups. We hope that's not an
+issue, but if you're seeing problems with this new feature, you can turn it of by setting the following in your .zshrc file,
+before Oh My Zsh is sourced:
+
+```sh
+zstyle ':omz:alpha:lib:git' async-prompt no
 ```
 
 #### Notice <!-- omit in toc -->
