@@ -11,7 +11,7 @@ function __git_prompt_git() {
   GIT_OPTIONAL_LOCKS=0 command git "$@"
 }
 
-function _omz_git_prompt_status() {
+function _omz_git_prompt_info() {
   # If we are on a folder not tracked by git, get out.
   # Otherwise, check for hide-info at global and local repository level
   if ! __git_prompt_git rev-parse --git-dir &> /dev/null \
@@ -42,6 +42,12 @@ function _omz_git_prompt_status() {
 # Enable async prompt by default unless the setting is at false / no
 if zstyle -T ':omz:alpha:lib:git' async-prompt; then
   function git_prompt_info() {
+    if [[ -n "$_OMZ_ASYNC_OUTPUT[_omz_git_prompt_info]" ]]; then
+      echo -n "$_OMZ_ASYNC_OUTPUT[_omz_git_prompt_info]"
+    fi
+  }
+
+  function git_prompt_status() {
     if [[ -n "$_OMZ_ASYNC_OUTPUT[_omz_git_prompt_status]" ]]; then
       echo -n "$_OMZ_ASYNC_OUTPUT[_omz_git_prompt_status]"
     fi
@@ -53,8 +59,13 @@ if zstyle -T ':omz:alpha:lib:git' async-prompt; then
     # Check if git_prompt_info is used in a prompt variable
     case "${PS1}:${PS2}:${PS3}:${PS4}:${RPS1}:${RPS2}:${RPS3}:${RPS4}" in
     *(\$\(git_prompt_info\)|\`git_prompt_info\`)*)
+      _omz_register_handler _omz_git_prompt_info
+      ;;
+    esac
+
+    case "${PS1}:${PS2}:${PS3}:${PS4}:${RPS1}:${RPS2}:${RPS3}:${RPS4}" in
+    *(\$\(git_prompt_status\)|\`git_prompt_status\`)*)
       _omz_register_handler _omz_git_prompt_status
-      return
       ;;
     esac
 
@@ -67,6 +78,9 @@ if zstyle -T ':omz:alpha:lib:git' async-prompt; then
   precmd_functions=(_defer_async_git_register $precmd_functions)
 else
   function git_prompt_info() {
+    _omz_git_prompt_info
+  }
+  function git_prompt_status() {
     _omz_git_prompt_status
   }
 fi
