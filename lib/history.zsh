@@ -21,7 +21,7 @@ function omz_history {
     builtin fc $stamp -l 1
   else
     # otherwise, run `fc -l` with a custom format
-    builtin fc $stamp -l "$@"
+    builtin fc -l "$@"
   fi
 }
 
