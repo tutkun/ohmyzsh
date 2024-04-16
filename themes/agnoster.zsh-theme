@@ -193,26 +193,24 @@ prompt_git() {
    if [[ "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]]; then
     repo_path=$(command git rev-parse --git-dir 2>/dev/null)
     dirty=$(parse_git_dirty)
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || \
-    ref="◈ $(git describe --exact-match --tags HEAD 2> /dev/null)" || \
-    ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
+    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+    ref="◈ $(command git describe --exact-match --tags HEAD 2> /dev/null)" || \
+    ref="➦ $(command git rev-parse --short HEAD 2> /dev/null)"
     if [[ -n $dirty ]]; then
       prompt_segment "$AGNOSTER_GIT_DIRTY_BG" "$AGNOSTER_GIT_DIRTY_FG"
     else
       prompt_segment "$AGNOSTER_GIT_CLEAN_BG" "$AGNOSTER_GIT_CLEAN_FG"
     fi
 
-    if [[ $AGNOSTER_GIT_BRANCH_STATUS == 'true' ]]; then
-      local ahead behind
-      ahead=$(command git log --oneline @{upstream}.. 2>/dev/null)
-      behind=$(command git log --oneline ..@{upstream} 2>/dev/null)
-      if [[ -n "$ahead" ]] && [[ -n "$behind" ]]; then
-        PL_BRANCH_CHAR=$'\u21c5'
-      elif [[ -n "$ahead" ]]; then
-        PL_BRANCH_CHAR=$'\u21b1'
-      elif [[ -n "$behind" ]]; then
-        PL_BRANCH_CHAR=$'\u21b0'
-      fi
+    local ahead behind
+    ahead=$(command git log --oneline @{upstream}.. 2>/dev/null)
+    behind=$(command git log --oneline ..@{upstream} 2>/dev/null)
+    if [[ -n "$ahead" ]] && [[ -n "$behind" ]]; then
+      PL_BRANCH_CHAR=$'\u21c5'
+    elif [[ -n "$ahead" ]]; then
+      PL_BRANCH_CHAR=$'\u21b1'
+    elif [[ -n "$behind" ]]; then
+      PL_BRANCH_CHAR=$'\u21b0'
     fi
 
     if [[ -e "${repo_path}/BISECT_LOG" ]]; then
@@ -289,10 +287,10 @@ prompt_hg() {
       rev=$(command hg id -n 2>/dev/null | sed 's/[^-0-9]//g')
       branch=$(command hg id -b 2>/dev/null)
       if command hg st | command grep -q "^\?"; then
-        prompt_segment "$AGNOSTER_HG_NEWFILE_BG" "$AGNOSTER_HG_NEWFILE_FG"
+        prompt_segment red black
         st='±'
       elif command hg st | command grep -q "^[MA]"; then
-        prompt_segment "$AGNOSTER_HG_CHANGED_BG" "$AGNOSTER_HG_CHANGED_FG"
+        prompt_segment yellow black
         st='±'
       else
         prompt_segment "$AGNOSTER_HG_CLEAN_BG" "$AGNOSTER_HG_CLEAN_FG"
