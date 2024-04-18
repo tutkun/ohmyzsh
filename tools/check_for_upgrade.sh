@@ -27,8 +27,8 @@ zstyle -s ':omz:update' mode update_mode || {
 # - $ZSH is not a git repository
 if [[ "$update_mode" = disabled ]] \
    || [[ ! -w "$ZSH" || ! -O "$ZSH" ]] \
-   || [[ ! -t 1 && ${POWERLEVEL9K_INSTANT_PROMPT:-off} == off ]] \
-   || ! command git --version 2>&1 >/dev/null \
+   || [[ ! -t 1 ]] \
+   || ! command git --version 2>&1 >/dev/null
    || (builtin cd -q "$ZSH"; ! command git rev-parse --is-inside-work-tree &>/dev/null); then
   unset update_mode
   return
