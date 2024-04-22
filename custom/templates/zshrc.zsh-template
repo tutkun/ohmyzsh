@@ -118,6 +118,9 @@ source $ZSH/oh-my-zsh.sh
 # Brew intell mac için:
 # export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
+# Python pyenv shims:
+export PATH=$(pyenv root)/shims:$PATH
+
 # Bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
