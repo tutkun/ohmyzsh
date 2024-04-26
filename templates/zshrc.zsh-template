@@ -157,7 +157,7 @@ export CHROME_EXECUTABLE=/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ 
 
 # Visual Studio Code (code)
 export VSCODE_EDITOR=/Applications/Code.app/Contents/Resources/app/bin
-export REACT_EDITOR=VSCODE_EDITOR
+export REACT_EDITOR=$VSCODE_EDITOR
 
 export PATH=$PATH:$VSCODE_EDITOR
 
