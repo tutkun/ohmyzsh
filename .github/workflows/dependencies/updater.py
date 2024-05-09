@@ -1,6 +1,5 @@
 import json
 import os
-import re
 import shutil
 import subprocess
 import sys
@@ -12,41 +11,15 @@ import requests
 import yaml
 from semver import Version
 
+import requests
+import yaml
+
 # Get TMP_DIR variable from environment
 TMP_DIR = os.path.join(os.environ.get("TMP_DIR", "/tmp"), "ohmyzsh")
 # Relative path to dependencies.yml file
 DEPS_YAML_FILE = ".github/dependencies.yml"
 # Dry run flag
 DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
-
-# utils for tag comparison
-BASEVERSION = re.compile(
-    r"""[vV]?
-    (?P<major>(0|[1-9])\d*)
-    (\.
-    (?P<minor>(0|[1-9])\d*)
-    (\.
-    (?P<patch>(0|[1-9])\d*)
-    )?
-    )?
-    """,
-    re.VERBOSE,
-)
-
-
-def coerce(version: str) -> Optional[Version]:
-    match = BASEVERSION.search(version)
-    if not match:
-        return None
-
-    # BASEVERSION looks for `MAJOR.minor.patch` in the string given
-    # it fills with None if any of them is missing (for example `2.1`)
-    ver = {
-        key: 0 if value is None else value for key, value in match.groupdict().items()
-    }
-    # Version takes `major`, `minor`, `patch` arguments
-    ver = Version(**ver)  # pyright: ignore[reportArgumentType]
-    return ver
 
 
 class CodeTimer:
@@ -81,24 +54,20 @@ class DependencyDict(TypedDict):
     repo: str
     branch: str
     version: str
-    precopy: NotRequired[str]
-    postcopy: NotRequired[str]
+    precopy: Optional[str]
+    postcopy: Optional[str]
 
 
 class DependencyYAML(TypedDict):
     dependencies: dict[str, DependencyDict]
 
 
-class UpdateStatusFalse(TypedDict):
-    has_updates: Literal[False]
-
-
-class UpdateStatusTrue(TypedDict):
-    has_updates: Literal[True]
-    version: str
-    compare_url: str
-    head_ref: str
-    head_url: str
+class UpdateStatus(TypedDict):
+    has_updates: bool
+    version: Optional[str]
+    compare_url: Optional[str]
+    head_ref: Optional[str]
+    head_url: Optional[str]
 
 
 class CommandRunner:
@@ -141,9 +110,7 @@ class DependencyStore:
         with CodeTimer(f"store deepcopy: {path}"):
             store_copy = deepcopy(DependencyStore.store)
 
-        dependency = store_copy["dependencies"].get(path)
-        if dependency is None:
-            raise ValueError(f"Dependency {path} {version} not found")
+        dependency = store_copy["dependencies"].get(path, {})
         dependency["version"] = version
         store_copy["dependencies"][path] = dependency
 
@@ -209,15 +176,13 @@ class Dependency:
                 else:
                     status = GitHub.check_updates(repo, remote_branch, version)
 
-            if status["has_updates"] is True:
+            if status["has_updates"]:
                 short_sha = status["head_ref"][:8]
                 new_version = status["version"] if is_tag else short_sha
 
                 try:
-                    branch_name = f"update/{self.path}/{new_version}"
-
                     # Create new branch
-                    branch = Git.checkout_or_create_branch(branch_name)
+                    branch = Git.create_branch(self.path, new_version)
 
                     # Update dependencies.yml file
                     self.__update_yaml(
@@ -228,22 +193,21 @@ class Dependency:
                     self.__apply_upstream_changes()
 
                     # Add all changes and commit
-                    has_new_commit = Git.add_and_commit(self.name, new_version)
+                    Git.add_and_commit(self.name, short_sha)
 
-                    if has_new_commit:
-                        # Push changes to remote
-                        Git.push(branch)
+                    # Push changes to remote
+                    Git.push(branch)
 
-                        # Create GitHub PR
-                        GitHub.create_pr(
-                            branch,
-                            f"feat({self.name}): update to version {new_version}",
-                            f"""## Description
+                    # Create GitHub PR
+                    GitHub.create_pr(
+                        branch,
+                        f"feat({self.name}): update to version {new_version}",
+                        f"""## Description
 
 Update for **{self.desc}**: update to version [{new_version}]({status['head_url']}).
 Check out the [list of changes]({status['compare_url']}).
 """,
-                        )
+                    )
 
                     # Clean up repository
                     Git.clean_repo()
@@ -253,10 +217,10 @@ Check out the [list of changes]({status['compare_url']}).
                         case CommandRunner.Exception:
                             # Print error message
                             print(
-                                f"Error running {e.stage} command: {e.returncode}",  # pyright: ignore[reportAttributeAccessIssue]
+                                f"Error running {e.stage} command: {e.returncode}",
                                 file=sys.stderr,
                             )
-                            print(e.stderr, file=sys.stderr)  # pyright: ignore[reportAttributeAccessIssue]
+                            print(e.stderr, file=sys.stderr)
                         case shutil.Error:
                             print(f"Error copying files: {e}", file=sys.stderr)
 
@@ -357,7 +321,7 @@ class Git:
             )
 
     @staticmethod
-    def checkout_or_create_branch(branch_name: str):
+    def create_branch(path: str, version: str):
         # Get current branch name
         result = CommandRunner.run_or_fail(
             ["git", "rev-parse", "--abbrev-ref", "HEAD"], stage="GetDefaultBranch"
@@ -365,34 +329,14 @@ class Git:
         Git.default_branch = result.stdout.decode("utf-8").strip()
 
         # Create new branch and return created branch name
-        try:
-            # try to checkout already existing branch
-            CommandRunner.run_or_fail(
-                ["git", "checkout", branch_name], stage="CreateBranch"
-            )
-        except CommandRunner.Exception:
-            # otherwise create new branch
-            CommandRunner.run_or_fail(
-                ["git", "checkout", "-b", branch_name], stage="CreateBranch"
-            )
+        branch_name = f"update/{path}/{version}"
+        CommandRunner.run_or_fail(
+            ["git", "checkout", "-b", branch_name], stage="CreateBranch"
+        )
         return branch_name
 
     @staticmethod
-    def add_and_commit(scope: str, version: str) -> bool:
-        """
-        Returns `True` if there were changes and were indeed commited.
-        Returns `False` if the repo was clean and no changes were commited.
-        """
-        # check if repo is clean (clean => no error, no commit)
-        try:
-            CommandRunner.run_or_fail(
-                ["git", "diff", "--exit-code"], stage="CheckRepoClean"
-            )
-            return False
-        except CommandRunner.Exception:
-            # if it's other kind of error just throw!
-            pass
-
+    def add_and_commit(scope: str, version: str):
         user_name = os.environ.get("GIT_APP_NAME")
         user_email = os.environ.get("GIT_APP_EMAIL")
 
@@ -420,7 +364,6 @@ class Git:
             stage="CreateCommit",
             env=clean_env,
         )
-        return True
 
     @staticmethod
     def push(branch: str):
@@ -440,17 +383,12 @@ class Git:
 
 class GitHub:
     @staticmethod
-    def check_newer_tag(repo, current_tag) -> UpdateStatusFalse | UpdateStatusTrue:
+    def check_newer_tag(repo, current_tag) -> UpdateStatus:
         # GET /repos/:owner/:repo/git/refs/tags
         url = f"https://api.github.com/repos/{repo}/git/refs/tags"
 
         # Send a GET request to the GitHub API
         response = requests.get(url)
-        current_version = coerce(current_tag)
-        if current_version is None:
-            raise ValueError(
-                f"Stored {current_version} from {repo} does not follow semver"
-            )
 
         # If the request was successful
         if response.status_code == 200:
@@ -462,27 +400,10 @@ class GitHub:
                     "has_updates": False,
                 }
 
-            latest_ref = None
-            latest_version: Optional[Version] = None
-            for ref in data:
-                # we find the tag since GitHub returns it as plain git ref
-                tag_version = coerce(ref["ref"].replace("refs/tags/", ""))
-                if tag_version is None:
-                    # we skip every tag that is not semver-complaint
-                    continue
-                if latest_version is None or tag_version.compare(latest_version) > 0:
-                    # if we have a "greater" semver version, set it as latest
-                    latest_version = tag_version
-                    latest_ref = ref
-
-            # raise if no valid semver tag is found
-            if latest_ref is None or latest_version is None:
-                raise ValueError(f"No tags following semver found in {repo}")
-
-            # we get the tag since GitHub returns it as plain git ref
+            latest_ref = data[-1]
             latest_tag = latest_ref["ref"].replace("refs/tags/", "")
 
-            if latest_version.compare(current_version) <= 0:
+            if latest_tag == current_tag:
                 return {
                     "has_updates": False,
                 }
@@ -501,7 +422,10 @@ class GitHub:
             )
 
     @staticmethod
-    def check_updates(repo, branch, version) -> UpdateStatusFalse | UpdateStatusTrue:
+    def check_updates(repo, branch, version) -> UpdateStatus:
+        # TODO: add support for semver updating (based on tags)
+        # Check if upstream github repo has a new version
+        # GitHub API URL for comparing two commits
         url = f"https://api.github.com/repos/{repo}/compare/{version}...{branch}"
 
         # Send a GET request to the GitHub API
@@ -540,27 +464,6 @@ class GitHub:
 
     @staticmethod
     def create_pr(branch: str, title: str, body: str) -> None:
-        # first of all let's check if PR is already open
-        check_cmd = [
-            "gh",
-            "pr",
-            "list",
-            "--state",
-            "open",
-            "--head",
-            branch,
-            "--json",
-            "title",
-        ]
-        # returncode is 0 also if no PRs are found
-        output = json.loads(
-            CommandRunner.run_or_fail(check_cmd, stage="CheckPullRequestOpen")
-            .stdout.decode("utf-8")
-            .strip()
-        )
-        # we have PR in this case!
-        if len(output) > 0:
-            return
         cmd = [
             "gh",
             "pr",
