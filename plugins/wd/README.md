@@ -83,7 +83,7 @@ zplug "mfaerevaag/wd", as:command, use:"wd.sh", hook-load:"wd() { . $ZPLUG_REPOS
 
 ### Automatic
 
-_Note: automatic install does not provide the manpage. It is also poor security practice to run remote code without first reviewing it, so you ought to look [here](https://github.com/mfaerevaag/wd/blob/master/install.sh)_
+*Note: automatic install does not provide the manpage. It is also poor security practice to run remote code without first reviewing it, so you ought to look [here](https://github.com/mfaerevaag/wd/blob/master/install.sh)*
 
 Run either command in your terminal:
 
@@ -141,11 +141,10 @@ rm -f ~/.zcompdump; compinit
 
 ## Browse
 
-`wd` comes with an `fzf`-powered browse feature to fuzzy search through all your warp points. It's available through the `wd browse` command. For quick access you can set up an alias or keybind in your `.zshrc`:
+If you want to make use of the `fzf`-powered browse feature to fuzzy search through all your warp points, set up a keybind in your `.zshrc`:
 
 ```zsh
-# ctrl-b to open the fzf browser
-bindkey ${FZF_WD_BINDKEY:-'^B'} wd_browse_widget
+bindkey '^G' wd_browse
 ```
 
 ## Usage
@@ -173,7 +172,6 @@ wd addcd /foo/ bar
 wd addcd /foo/
 ```
 
-
 You can omit point name to automatically use the current directory's name instead.
 
 * From any directory, warp to `foo` with:
@@ -195,8 +193,8 @@ wd ..
 wd ...
 ```
 
-This is a wrapper for the zsh's `dirs` function.
-_You might need to add `setopt AUTO_PUSHD` to your `.zshrc` if you are not using [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)._
+This is a wrapper for the zsh's `dirs` function.  
+*You might need to add `setopt AUTO_PUSHD` to your `.zshrc` if you are not using [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh).*
 
 * Remove warp point:
 
