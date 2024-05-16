@@ -1,5 +1,5 @@
-# .NET için telemetri takibini önle:
-DOTNET_CLI_TELEMETRY_OPTOUT=true
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Nushell için ayarlar
 export XDG_CONFIG_HOME=${HOME}/.config
