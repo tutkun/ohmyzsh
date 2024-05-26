@@ -9,16 +9,16 @@ plugins=(... macos)
 ```
 
 ## Supported Terminals
+
 - [iTerm](https://iterm.sourceforge.net/)
 - [iTerm2](https://iterm2.com/)
 - [Hyper](https://hyper.is/)
 - [Tabby](https://tabby.sh/)
-- [Ghostty](https://ghostty.org)
 
 ## Commands
 
 | Command       | Description                                              |
-| :------------ | :------------------------------------------------------- |
+|:--------------|:---------------------------------------------------------|
 | `tab`         | Open the current directory in a new tab                  |
 | `split_tab`   | Split the current terminal tab horizontally              |
 | `vsplit_tab`  | Split the current terminal tab vertically                |
