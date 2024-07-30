@@ -48,7 +48,6 @@ To learn more, visit [ohmyz.sh](https://ohmyz.sh), follow [@ohmyzsh](https://x.c
    4. [Enable GNU ls In macOS And freeBSD Systems](#enable-gnu-ls-in-macos-and-freebsd-systems)
    5. [Skip Aliases](#skip-aliases)
    6. [Disable async git prompt](#disable-async-git-prompt)
-   7. [Async git prompt](#async-git-prompt)
 4. [Getting Updates](#getting-updates)
    1. [Updates Verbosity](#updates-verbosity)
    2. [Manual Updates](#manual-updates)
@@ -405,6 +404,15 @@ Instead, you can now use the following:
 zstyle ':omz:lib:directories' aliases no
 ```
 
+#### Notice <!-- omit in toc -->
+
+> This feature is currently in a testing phase and it may be subject to change in the future.
+> It is also not currently compatible with plugin managers such as zpm or zinit, which don't
+> source the init script (`oh-my-zsh.sh`) where this feature is implemented in.
+
+> It is also not currently aware of "aliases" that are defined as functions. Example of such
+> are `gccd`, `ggf`, or `ggl` functions from the git plugin.
+
 ### Disable async git prompt
 
 Async prompt functions are an experimental feature (included on April 3, 2024) that allows Oh My Zsh to render prompt information
@@ -414,34 +422,6 @@ before Oh My Zsh is sourced:
 
 ```sh
 zstyle ':omz:alpha:lib:git' async-prompt no
-```
-
-#### Notice <!-- omit in toc -->
-
-> This feature is currently in a testing phase and it may be subject to change in the future. It is also not
-> currently compatible with plugin managers such as zpm or zinit, which don't source the init script
-> (`oh-my-zsh.sh`) where this feature is implemented in.
-
-> It is also not currently aware of "aliases" that are defined as functions. Example of such are `gccd`,
-> `ggf`, or `ggl` functions from the git plugin.
-
-### Async git prompt
-
-Async prompt functions are an experimental feature (included on April 3, 2024) that allows Oh My Zsh to render
-prompt information asynchronously. This can improve prompt rendering performance, but it might not work well
-with some setups. We hope that's not an issue, but if you're seeing problems with this new feature, you can
-turn it off by setting the following in your .zshrc file, before Oh My Zsh is sourced:
-
-```sh
-zstyle ':omz:alpha:lib:git' async-prompt no
-```
-
-If your problem is that the git prompt just stopped appearing, you can try to force it by setting the following
-configuration before `oh-my-zsh.sh` is sourced. If it still does not work, please open an issue with your
-case.
-
-```sh
-zstyle ':omz:alpha:lib:git' async-prompt force
 ```
 
 ## Getting Updates
