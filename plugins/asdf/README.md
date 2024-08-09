@@ -1,4 +1,4 @@
-# asdf
+## asdf
 
 Adds integration with [asdf](https://github.com/asdf-vm/asdf), the extendable version manager, with support for Ruby, Node.js, Elixir, Erlang and more.
 
@@ -40,9 +40,6 @@ asdf set -p nodejs 16.5.0   # -p is shorthand for --parent
 asdf set -u nodejs 16.5.0   # -u is shorthand for --home
 ```
 
-For more commands, run `asdf help` or refer to the
-[asdf CLI documentation](https://asdf-vm.com/manage/commands.html#all-commands).
-
-## Maintainer
+### Maintainer
 
 - [@RobLoach](https://github.com/RobLoach)
