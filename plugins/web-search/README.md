@@ -18,14 +18,14 @@ You can use the `web-search` plugin in these two forms:
 For example, these two are equivalent:
 
 ```zsh
-$ web_search google oh-my-zsh
-$ google oh-my-zsh
+web_search google oh-my-zsh
+google oh-my-zsh
 ```
 
 Available search contexts are:
 
 | Context               | URL                                             |
-| --------------------- | ----------------------------------------------- |
+|-----------------------|-------------------------------------------------|
 | `bing`                | `https://www.bing.com/search?q=`                |
 | `google`              | `https://www.google.com/search?q=`              |
 | `brs` or `brave`      | `https://search.brave.com/search?q=`            |
@@ -51,13 +51,11 @@ Available search contexts are:
 | `packagist`           | `https://packagist.org/?query=`                 |
 | `gopkg`               | `https://pkg.go.dev/search?m=package&q=`        |
 | `chatgpt`             | `https://chatgpt.com/?q=`                       |
-| `reddit`              | `https://www.reddit.com/search/?q=`             |
-| `ppai`                | `https://www.perplexity.ai/search/new?q=`       |
 
 Also there are aliases for bang-searching DuckDuckGo:
 
 | Context | Bang |
-| ------- | ---- |
+|---------|------|
 | `wiki`  | `!w` |
 | `news`  | `!n` |
 | `map`   | `!m` |
