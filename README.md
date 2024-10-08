@@ -26,38 +26,40 @@ Twitter), and join us on [Discord](https://discord.gg/ohmyzsh).
 <details>
 <summary>Table of Contents</summary>
 
-1. [|:----------|:--------------------------------------------------|](#------------------------------------------------------------)
-         1. [Manual Inspection](#manual-inspection)
-   1. [Using Oh My Zsh](#using-oh-my-zsh)
-      1. [Plugins](#plugins)
-         1. [Enabling Plugins](#enabling-plugins)
-         2. [Using Plugins](#using-plugins)
-      2. [Themes](#themes)
-2. [We'll admit it. Early in the Oh My Zsh world, we may have gotten a bit too theme-happy. We have over one](#well-admit-it-early-in-the-oh-my-zsh-world-we-may-have-gotten-a-bit-too-theme-happy-we-have-over-one)
-         1. [Selecting A Theme](#selecting-a-theme)
-      1. [FAQ](#faq)
-      1. [Advanced Topics](#advanced-topics)
-      1. [Advanced Installation](#advanced-installation)
-         1. [Custom Directory](#custom-directory)
-         2. [Unattended Install](#unattended-install)
-         3. [Installing From A Forked Repository](#installing-from-a-forked-repository)
-         4. [Manual Installation](#manual-installation)
-      2. [Installation Problems](#installation-problems)
-      3. [Custom Plugins And Themes](#custom-plugins-and-themes)
-      4. [Enable GNU ls In macOS And freeBSD Systems](#enable-gnu-ls-in-macos-and-freebsd-systems)
-      5. [Skip Aliases](#skip-aliases)
-      6. [Disable async git prompt](#disable-async-git-prompt)
-      2. [Getting Updates](#getting-updates)
-      1. [Updates Verbosity](#updates-verbosity)
-      2. [Manual Updates](#manual-updates)
-      3. [Uninstalling Oh My Zsh](#uninstalling-oh-my-zsh)
-      4. [How Do I Contribute To Oh My Zsh?](#how-do-i-contribute-to-oh-my-zsh)
-      1. [Do Not Send Us Themes](#do-not-send-us-themes)
-      5. [Contributors](#contributors)
-      6. [Follow Us](#follow-us)
-      7. [Merchandise](#merchandise)
-      8. [License](#license)
-      9. [About Planet Argon](#about-planet-argon)
+1. [Getting Started](#getting-started)
+   1. [Operating System Compatibility](#operating-system-compatibility)
+   2. [Prerequisites](#prerequisites)
+   3. [Basic Installation](#basic-installation)
+      1. [Manual Inspection](#manual-inspection)
+2. [Using Oh My Zsh](#using-oh-my-zsh)
+   1. [Plugins](#plugins)
+      1. [Enabling Plugins](#enabling-plugins)
+      2. [Using Plugins](#using-plugins)
+   2. [Themes](#themes)
+      1. [Selecting A Theme](#selecting-a-theme)
+   3. [FAQ](#faq)
+3. [Advanced Topics](#advanced-topics)
+   1. [Advanced Installation](#advanced-installation)
+      1. [Custom Directory](#custom-directory)
+      2. [Unattended Install](#unattended-install)
+      3. [Installing From A Forked Repository](#installing-from-a-forked-repository)
+      4. [Manual Installation](#manual-installation)
+   2. [Installation Problems](#installation-problems)
+   3. [Custom Plugins And Themes](#custom-plugins-and-themes)
+   4. [Enable GNU ls In macOS And freeBSD Systems](#enable-gnu-ls-in-macos-and-freebsd-systems)
+   5. [Skip Aliases](#skip-aliases)
+   6. [Async git prompt](#async-git-prompt)
+4. [Getting Updates](#getting-updates)
+   1. [Updates Verbosity](#updates-verbosity)
+   2. [Manual Updates](#manual-updates)
+5. [Uninstalling Oh My Zsh](#uninstalling-oh-my-zsh)
+6. [How Do I Contribute To Oh My Zsh?](#how-do-i-contribute-to-oh-my-zsh)
+   1. [Do Not Send Us Themes](#do-not-send-us-themes)
+7. [Contributors](#contributors)
+8. [Follow Us](#follow-us)
+9. [Merchandise](#merchandise)
+10. [License](#license)
+11. [About Planet Argon](#about-planet-argon)
 
 </details>
 
@@ -414,7 +416,7 @@ zstyle ':omz:lib:directories' aliases no
 > It is also not currently aware of "aliases" that are defined as functions. Example of such are `gccd`,
 > `ggf`, or `ggl` functions from the git plugin.
 
-### Disable async git prompt
+### Async git prompt
 
 Async prompt functions are an experimental feature (included on April 3, 2024) that allows Oh My Zsh to render
 prompt information asynchronously. This can improve prompt rendering performance, but it might not work well
@@ -423,6 +425,14 @@ turn it off by setting the following in your .zshrc file, before Oh My Zsh is so
 
 ```sh
 zstyle ':omz:alpha:lib:git' async-prompt no
+```
+
+If your problem is that the git prompt just stopped appearing, you can try to force it setting the following
+configuration before `oh-my-zsh.sh` is sourced. If it still does not work, please open an issue with your
+case.
+
+```sh
+zstyle ':omz:alpha:lib:git' async-prompt force
 ```
 
 ## Getting Updates
