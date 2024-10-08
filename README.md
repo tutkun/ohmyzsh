@@ -14,7 +14,8 @@ Strangers will come up to you in cafés and ask you, _"that is amazing! are you 
 Finally, you'll begin to get the sort of attention that you have always felt you deserved. ...or maybe you'll
 use the time that you're saving to start flossing more often. 😬
 
-To learn more, visit [ohmyz.sh](https://ohmyz.sh), follow [@ohmyzsh](https://x.com/ohmyzsh) on X (formerly Twitter), and join us on [Discord](https://discord.gg/ohmyzsh).
+To learn more, visit [ohmyz.sh](https://ohmyz.sh), follow [@ohmyzsh](https://x.com/ohmyzsh) on X (formerly
+Twitter), and join us on [Discord](https://discord.gg/ohmyzsh).
 
 [![CI](https://github.com/ohmyzsh/ohmyzsh/workflows/CI/badge.svg)](https://github.com/ohmyzsh/ohmyzsh/actions?query=workflow%3ACI)
 [![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/ohmyzsh?label=%40ohmyzsh&logo=x&style=flat)](https://twitter.com/intent/follow?screen_name=ohmyzsh)
@@ -25,40 +26,38 @@ To learn more, visit [ohmyz.sh](https://ohmyz.sh), follow [@ohmyzsh](https://x.c
 <details>
 <summary>Table of Contents</summary>
 
-1. [Getting Started](#getting-started)
-   1. [Operating System Compatibility](#operating-system-compatibility)
-   2. [Prerequisites](#prerequisites)
-   3. [Basic Installation](#basic-installation)
-      1. [Manual Inspection](#manual-inspection)
-2. [Using Oh My Zsh](#using-oh-my-zsh)
-   1. [Plugins](#plugins)
-      1. [Enabling Plugins](#enabling-plugins)
-      2. [Using Plugins](#using-plugins)
-   2. [Themes](#themes)
-      1. [Selecting A Theme](#selecting-a-theme)
-   3. [FAQ](#faq)
-3. [Advanced Topics](#advanced-topics)
-   1. [Advanced Installation](#advanced-installation)
-      1. [Custom Directory](#custom-directory)
-      2. [Unattended Install](#unattended-install)
-      3. [Installing From A Forked Repository](#installing-from-a-forked-repository)
-      4. [Manual Installation](#manual-installation)
-   2. [Installation Problems](#installation-problems)
-   3. [Custom Plugins And Themes](#custom-plugins-and-themes)
-   4. [Enable GNU ls In macOS And freeBSD Systems](#enable-gnu-ls-in-macos-and-freebsd-systems)
-   5. [Skip Aliases](#skip-aliases)
-   6. [Disable async git prompt](#disable-async-git-prompt)
-4. [Getting Updates](#getting-updates)
-   1. [Updates Verbosity](#updates-verbosity)
-   2. [Manual Updates](#manual-updates)
-5. [Uninstalling Oh My Zsh](#uninstalling-oh-my-zsh)
-6. [How Do I Contribute To Oh My Zsh?](#how-do-i-contribute-to-oh-my-zsh)
-   1. [Do Not Send Us Themes](#do-not-send-us-themes)
-7. [Contributors](#contributors)
-8. [Follow Us](#follow-us)
-9. [Merchandise](#merchandise)
-10. [License](#license)
-11. [About Planet Argon](#about-planet-argon)
+1. [|:----------|:--------------------------------------------------|](#------------------------------------------------------------)
+         1. [Manual Inspection](#manual-inspection)
+   1. [Using Oh My Zsh](#using-oh-my-zsh)
+      1. [Plugins](#plugins)
+         1. [Enabling Plugins](#enabling-plugins)
+         2. [Using Plugins](#using-plugins)
+      2. [Themes](#themes)
+2. [We'll admit it. Early in the Oh My Zsh world, we may have gotten a bit too theme-happy. We have over one](#well-admit-it-early-in-the-oh-my-zsh-world-we-may-have-gotten-a-bit-too-theme-happy-we-have-over-one)
+         1. [Selecting A Theme](#selecting-a-theme)
+      1. [FAQ](#faq)
+      1. [Advanced Topics](#advanced-topics)
+      1. [Advanced Installation](#advanced-installation)
+         1. [Custom Directory](#custom-directory)
+         2. [Unattended Install](#unattended-install)
+         3. [Installing From A Forked Repository](#installing-from-a-forked-repository)
+         4. [Manual Installation](#manual-installation)
+      2. [Installation Problems](#installation-problems)
+      3. [Custom Plugins And Themes](#custom-plugins-and-themes)
+      4. [Enable GNU ls In macOS And freeBSD Systems](#enable-gnu-ls-in-macos-and-freebsd-systems)
+      5. [Skip Aliases](#skip-aliases)
+      6. [Disable async git prompt](#disable-async-git-prompt)
+      2. [Getting Updates](#getting-updates)
+      1. [Updates Verbosity](#updates-verbosity)
+      2. [Manual Updates](#manual-updates)
+      3. [Uninstalling Oh My Zsh](#uninstalling-oh-my-zsh)
+      4. [How Do I Contribute To Oh My Zsh?](#how-do-i-contribute-to-oh-my-zsh)
+      1. [Do Not Send Us Themes](#do-not-send-us-themes)
+      5. [Contributors](#contributors)
+      6. [Follow Us](#follow-us)
+      7. [Merchandise](#merchandise)
+      8. [License](#license)
+      9. [About Planet Argon](#about-planet-argon)
 
 </details>
 
@@ -95,10 +94,12 @@ command-line with either `curl`, `wget` or another similar tool.
 | **wget**  | `sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`   |
 | **fetch** | `sh -c "$(fetch -o - https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` |
 
-Alternatively, the installer is also mirrored outside GitHub. Using this URL instead may be required if you're in a country like China or India (for certain ISPs), that blocks `raw.githubusercontent.com`:
+Alternatively, the installer is also mirrored outside GitHub. Using this URL instead may be required if you're
+in a country like China or India (for certain ISPs), that blocks `raw.githubusercontent.com`:
 
 | Method    | Command                                           |
-|:----------|:--------------------------------------------------|
+
+| :-------- | :------------------------------------------------ |
 | **curl**  | `sh -c "$(curl -fsSL https://install.ohmyz.sh/)"` |
 | **wget**  | `sh -c "$(wget -O- https://install.ohmyz.sh/)"`   |
 | **fetch** | `sh -c "$(fetch -o - https://install.ohmyz.sh/)"` |
@@ -161,7 +162,7 @@ adds any) and extra goodies that are included in that particular plugin.
 
 ### Themes
 
-We'll admit it. Early in the Oh My Zsh world, we may have gotten a bit too theme-happy. We have over one
+We'll admit it. Early in the Oh My Zsh world, we may have gotten a bit too theme happy. We have over one
 hundred and fifty themes now bundled. Most of them have
 [screenshots](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes) on the wiki (We are working on updating this!).
 Check them out!
@@ -185,15 +186,22 @@ ZSH_THEME="agnoster" # (this is one of the fancy ones)
 # see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes#agnoster
 ```
 
+<!-- prettier-ignore-start -->
 > [!NOTE]
 > You will many times see screenshots for a zsh theme, and try it out, and find that it doesn't look the same for you.
+<!-- prettier-ignore-end -->
+
+> This is because many themes require installing a [Powerline Font](https://github.com/powerline/fonts) or a
+> [Nerd Font](https://github.com/ryanoasis/nerd-fonts) in order to render properly. Without them, these themes
+> will render weird prompt symbols. Check out
+> [the FAQ](https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#i-have-a-weird-character-in-my-prompt) for more
+> information.
 >
-> This is because many themes require installing a [Powerline Font](https://github.com/powerline/fonts) or a [Nerd Font](https://github.com/ryanoasis/nerd-fonts) in order to render properly.
-> Without them, these themes will render weird prompt symbols. Check out [the FAQ](https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#i-have-a-weird-character-in-my-prompt) for more information.
->
-> Also, beware that themes only control what your prompt looks like. This is, the text you see before or after your cursor, where you'll type your commands.
-> Themes don't control things such as the colors of your terminal window (known as _color scheme_) or the font of your terminal. These are settings that you can change in your terminal emulator.
-> For more information, see [what is a zsh theme](https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#what-is-a-zsh-theme).
+> Also, beware that themes only control what your prompt looks like. This is, the text you see before or after
+> your cursor, where you'll type your commands. Themes don't control things such as the colors of your
+> terminal window (known as _color scheme_) or the font of your terminal. These are settings that you can
+> change in your terminal emulator. For more information, see
+> [what is a zsh theme](https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#what-is-a-zsh-theme).
 
 Open up a new terminal window and your prompt should look something like this:
 
@@ -399,19 +407,19 @@ zstyle ':omz:lib:directories' aliases no
 
 #### Notice <!-- omit in toc -->
 
-> This feature is currently in a testing phase and it may be subject to change in the future.
-> It is also not currently compatible with plugin managers such as zpm or zinit, which don't
-> source the init script (`oh-my-zsh.sh`) where this feature is implemented in.
+> This feature is currently in a testing phase and it may be subject to change in the future. It is also not
+> currently compatible with plugin managers such as zpm or zinit, which don't source the init script
+> (`oh-my-zsh.sh`) where this feature is implemented in.
 
-> It is also not currently aware of "aliases" that are defined as functions. Example of such
-> are `gccd`, `ggf`, or `ggl` functions from the git plugin.
+> It is also not currently aware of "aliases" that are defined as functions. Example of such are `gccd`,
+> `ggf`, or `ggl` functions from the git plugin.
 
 ### Disable async git prompt
 
-Async prompt functions are an experimental feature (included on April 3, 2024) that allows Oh My Zsh to render prompt information
-asynchronously. This can improve prompt rendering performance, but it might not work well with some setups. We hope that's not an
-issue, but if you're seeing problems with this new feature, you can turn it off by setting the following in your .zshrc file,
-before Oh My Zsh is sourced:
+Async prompt functions are an experimental feature (included on April 3, 2024) that allows Oh My Zsh to render
+prompt information asynchronously. This can improve prompt rendering performance, but it might not work well
+with some setups. We hope that's not an issue, but if you're seeing problems with this new feature, you can
+turn it off by setting the following in your .zshrc file, before Oh My Zsh is sourced:
 
 ```sh
 zstyle ':omz:alpha:lib:git' async-prompt no
@@ -542,4 +550,6 @@ Oh My Zsh is released under the [MIT license](LICENSE.txt).
 
 ![Planet Argon](https://pa-github-assets.s3.amazonaws.com/PARGON_logo_digital_COL-small.jpg)
 
-Oh My Zsh was started by the team at [Planet Argon](https://www.planetargon.com/?utm_source=github), a [Ruby on Rails development agency](https://www.planetargon.com/services/ruby-on-rails-development?utm_source=github). Check out our [other open source projects](https://www.planetargon.com/open-source?utm_source=github).
+Oh My Zsh was started by the team at [Planet Argon](https://www.planetargon.com/?utm_source=github), a
+[Ruby on Rails development agency](https://www.planetargon.com/services/ruby-on-rails-development?utm_source=github).
+Check out our [other open source projects](https://www.planetargon.com/open-source?utm_source=github).
