@@ -308,21 +308,7 @@ _pm2_subcommands() {
     "examples:display pm2 usage examples"
   )
 
-local -a id_names
-
-_id_names() {
-    local app_list
-    app_list=`pm2 list -m`
-
-    local -a names ids
-    names=(`echo $app_list | grep '+---' | awk '{print $2}'`)
-    ids=(`echo $app_list | grep 'pm2 id' | awk '{print $4}'`)
-
-    if (( ${#ids} > 0 )); then
-        for i in {1..${#ids}}; do
-            id_names+=( "${ids[i]}:${names[i]}" )
-        done
-    fi
+  _describe -t subcommands 'subcommand' subcommands "$@"
 }
 
 (( $+functions[_pm2_id_names] )) ||
