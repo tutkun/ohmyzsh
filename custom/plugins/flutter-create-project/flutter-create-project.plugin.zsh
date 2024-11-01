@@ -1,6 +1,7 @@
 # Kullanıcıdan proje oluştururken template ve platform seçmesini isteyen bir fonksiyon
 flutter-create-project(){
   # Parametreleri kontrol et
+  echo "Parametreler: " $#
   if [[ $# -eq 1 ]]; then
     project_name="$1 $1"
   elif [[ $# -ge 2 ]]; then
