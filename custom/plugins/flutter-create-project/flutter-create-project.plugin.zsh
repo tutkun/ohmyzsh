@@ -47,6 +47,6 @@ flutter-create-project(){
     esac
 
     # projeyi oluştur
-    echo $(flutter create --org=com.firma.apps --platforms="$platforms" --template="$template" -e --project-name "$@")
+    echo "Parametre: $@"
     flutter create --org=com.firma.apps --platforms="$platforms" --template="$template" -e --project-name "$@"
 }
