@@ -1,5 +1,5 @@
 # .NET için telemetri takibini önle:
-DOTNET_CLI_TELEMETRY_OPTOUT=1
+DOTNET_CLI_TELEMETRY_OPTOUT=true
 
 # eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -122,17 +122,6 @@ export PATH=$(pyenv root)/shims:$PATH
 
 # Bun using
 export PATH="$HOME/.bun/bin:$PATH"
-
-# Pnpm
-export PNPM_HOME="$HOME/.pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# Pnpm End
-
-# Yarn using
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 #! Gelistiricilere ozel kutuphane SdkMan!
 # Java versiyonu ayarlama komutu: "sdk home java 17.0.10-jbr"
