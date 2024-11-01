@@ -6,7 +6,7 @@ flutter-create-project(){
   elif [[ $# -ge 2 ]]; then
     project_name="$@"
   else
-    echo "En az bir parametre (proje_adi) girmelisiniz."
+    echo "\033[33mEn az bir parametre (proje_adi) girmelisiniz.\033[0m"
     return
   fi
 
