@@ -1,7 +1,5 @@
-# flutter-create-project.plugin.zsh
-
 # Kullanıcıdan proje oluştururken template ve platform seçmesini isteyen bir fonksiyon
-flutter-create-project() {
+flutter-create-project(){
     # Kullanıcıdan template seçimi alınır
     echo "Lütfen --template parametresi için bir seçim yapın:"
     echo "   [app] - (default) Bir Flutter uygulaması oluşturun."

@@ -14,13 +14,13 @@ create-nextjs-app(){
     else
         # NextJS projesi çekiliyor
         # npx create-next-app $PROJECT_DIR --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"
-        git clone https://github.com/tutkun/nextjs-webapp-template $PROJECT_DIR
+        git clone --depth=1 https://github.com/tutkun/nextjs-webapp-template $PROJECT_DIR
         # rm -rf $PROJECT_DIR/.git/
-        
+
         # projenin kurulacağı dizine geç
         cd $PROJECT_DIR
         echo "${PROJECT_DIR} dizinine geçiş yapıldı..."
-        
+
         # git ile projeye dosyaları ekle
         # git init
         git add .
