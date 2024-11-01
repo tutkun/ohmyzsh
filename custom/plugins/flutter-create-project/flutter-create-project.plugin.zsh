@@ -3,9 +3,9 @@ flutter-create-project(){
   # Parametreleri kontrol et
   echo "Parametreler: " ${}
   if [[ $# -eq 1 ]]; then
-    project_name=$("--project-name $1 $1")
+    project_name=--project-name "$1 $1"
   elif [[ $# -ge 2 ]]; then
-    project_name=$("--project-name $@")
+    project_name=--project-name "$@"
   else
     echo "\033[31mEn az bir parametre (proje_adi) girmelisiniz.\033[0m"
     exit 1
