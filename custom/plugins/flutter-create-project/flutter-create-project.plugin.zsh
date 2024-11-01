@@ -54,6 +54,6 @@ flutter-create-project(){
     flutter create --empty --org=com.tutkuns.apps --platforms="$platforms" --template="$template" --project-name "$@"
   else
     echo "\033[31mEn az bir parametre (proje_adi) girmelisiniz.\033[0m"
-    exit 1
+    return 1
   fi
 }
