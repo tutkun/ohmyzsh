@@ -71,7 +71,7 @@ flutter-create-project(){
 # Kullanıcıdan proje oluştururken template ve platform seçmesini isteyen bir fonksiyon
 flutter-create-project(){
     # Girilen parametre sayısını kontrol et
-    if [[ $# -lt 2 ]]; then
+    if [[ $# -e 1 ]]; then
         project_name="$1 $1"
     elif [[ $# -ge 2 ]]; then
         project_name="$@"
