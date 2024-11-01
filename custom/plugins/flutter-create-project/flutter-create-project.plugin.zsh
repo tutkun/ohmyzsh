@@ -58,5 +58,5 @@ flutter-create-project(){
   esac
 
   # projeyi oluştur
-  flutter create --org=com.tutkuns.apps --platforms="$platforms" --template="$template" -e --project-name $project_name
+  flutter create --org=com.tutkuns.apps --platforms="$platforms" -t="$template" -e --disable-analytics --project-name "$project_name"
 }
