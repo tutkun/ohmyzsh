@@ -1,5 +1,5 @@
 # .NET için telemetri takibini önle:
-DOTNET_CLI_TELEMETRY_OPTOUT=1
+DOTNET_CLI_TELEMETRY_OPTOUT=true
 
 # eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -92,7 +92,7 @@ plugins=(
   colorize command-not-found compleat common-aliases
   zsh-autosuggestions zsh-syntax-highlighting themes
   alias-finder sublime
-  create-nextjs-app
+  create-nextjs-app flutter-create-project
   webos-tv-cli
 )
 
@@ -175,8 +175,7 @@ alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 
 # flutter create --org com.newcompany --project-name newproject .
-# alias flutter-create-project="flutter create --org=com.tutkuns.apps "
-alias flutter-create-project="flutter create --org=com.tutkuns.apps --platforms='ios,android' --template=app -e --project-name "
+# alias flutter-create-project="flutter create --org=com.tutkuns.apps --platforms='ios,android' --template=app -e --project-name "
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
