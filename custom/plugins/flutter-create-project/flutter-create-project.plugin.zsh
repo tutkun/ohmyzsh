@@ -31,7 +31,7 @@ flutter-create-project(){
     echo "   [macos] - macos platformu için kurulumları yapar."
     echo "   [linux] - linux platformu için kurulumları yapar."
     echo "   [windows] - windows platformu için kurulumları yapar."
-    echo -n "Seçiminizi yapın (varsayılan: 'ios,android,web,macos,linux,windows'): "
+    echo -n "Seçiminizi yapın (varsayılan: 'hepsi'): "
     read platforms_choice
 
     # eğer kullanıcı boş bırakırsa varsayılan değer 'hepsi' olarak ayarlanır
@@ -47,6 +47,5 @@ flutter-create-project(){
     esac
 
     # projeyi oluştur
-    echo "Parametre: $@"
-    flutter create --org=com.firma.apps --platforms="$platforms" --template="$template" -e --project-name "$@"
+    flutter create --org=com.tutkuns.apps --platforms=["$platforms"] --template="$template" -e --project-name "$@"
 }
