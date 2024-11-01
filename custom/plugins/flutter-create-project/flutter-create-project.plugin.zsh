@@ -4,7 +4,7 @@ flutter-create-project(){
   if [[ $# -eq 1 ]]; then
     project_name="$1 $1"
   elif [[ $# -ge 2 ]]; then
-    project_name=$("$@")
+    project_name=$@
   else
     echo "\033[33mEn az bir parametre (proje_adi) girmelisiniz.\033[0m"
     return
@@ -34,14 +34,14 @@ flutter-create-project(){
 
   # Kullanıcıdan platformlar seçimi alınır
   echo "\033[33mLütfen --platforms parametresi için bir veya daha fazla seçim yapın:\033[0m"
-  echo "\033[32m   [hepsi]\033[0m - tüm platformlar için (ios,android,web,macos,linux,windows) kurulumları yapar."
-  echo "\033[32m   [ios]\033[0m - ios platformu için kurulumları yapar."
-  echo "\033[32m   [android]\033[0m - android platformu için kurulumları yapar."
-  echo "\033[32m   [web]\033[0m - web platformu için kurulumları yapar."
-  echo "\033[32m   [macos]\033[0m - macos platformu için kurulumları yapar."
-  echo "\033[32m   [linux]\033[0m - linux platformu için kurulumları yapar."
+  echo "\033[32m   [hepsi]\033[0m - tüm platformlar(ios,android,web,macos,linux,windows) için,"
+  echo "\033[32m   [ios]\033[0m - ios platformu için,"
+  echo "\033[32m   [android]\033[0m - android platformu için,"
+  echo "\033[32m   [web]\033[0m - web platformu için,"
+  echo "\033[32m   [macos]\033[0m - macos platformu için,"
+  echo "\033[32m   [linux]\033[0m - linux platformu için,"
   echo "\033[32m   [windows]\033[0m - windows platformu için kurulumları yapar."
-  echo -n "\033[33mSeçiminizi yapın (varsayılan: 'hepsi'): \033[0m"
+  echo -n "\033[33mSeçiminiz (varsayılan: 'hepsi'): \033[0m"
   read platforms_choice
 
   # eğer kullanıcı boş bırakırsa varsayılan değer 'hepsi' olarak ayarlanır
