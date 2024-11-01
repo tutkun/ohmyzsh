@@ -4,10 +4,10 @@ flutter-create-project(){
   if [[ $# -eq 1 ]]; then
     project_name="$1 $1"
   elif [[ $# -ge 2 ]]; then
-    project_name=$@
+    project_name="$@"
   else
-    echo "\033[33mEn az bir parametre (proje_adi) girmelisiniz.\033[0m"
-    return
+    echo "\033[31mEn az bir parametre (proje_adi) girmelisiniz.\033[0m"
+    exit 1
   fi
 
   # Kullanıcıdan template seçimi alınır
