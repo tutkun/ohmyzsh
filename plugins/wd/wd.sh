@@ -8,7 +8,7 @@
 # @github.com/mfaerevaag/wd
 
 # version
-readonly WD_VERSION=0.9.1
+readonly WD_VERSION=0.9.2
 
 # colors
 readonly WD_BLUE="\033[96m"
@@ -260,7 +260,7 @@ wd_browse() {
         echo "This functionality requires fzf. Please install fzf first."
         return 1
     fi
-    local entries=("${(@f)$(sed "s:${HOME}:~:g" "$WD_CONFIG" | awk -F ':' '{print $1 " -> " $2}')}")
+    local entries=("${(@f)$(sed "s:${HOME}:~:g" "$wd_config_file" | awk -F ':' '{print $1 " -> " $2}')}")
     local script_path="${${(%):-%x}:h}"
     local wd_remove_output=$(mktemp "${TMPDIR:-/tmp}/wd.XXXXXXXXXX")
     entries=("All warp points:" "Press enter to select. Press delete to remove" "${entries[@]}")
@@ -278,7 +278,7 @@ wd_browse() {
 }
 
 wd_browse_widget() {
-  if [[ -e $WD_CONFIG ]]; then
+  if [[ -e $wd_config_file ]]; then
     wd_browse
     saved_buffer=$BUFFER
     saved_cursor=$CURSOR
@@ -597,7 +597,7 @@ unset wd_print_msg
 unset wd_yesorno
 unset wd_print_usage
 unset wd_alt_config
-#unset wd_config_file do not unset this - breaks keybind
+unset wd_config_file
 unset wd_quiet_mode
 unset wd_print_version
 unset wd_force_mode
