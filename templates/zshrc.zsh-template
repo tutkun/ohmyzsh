@@ -1,6 +1,9 @@
 # .NET için telemetri takibini önle:
 DOTNET_CLI_TELEMETRY_OPTOUT=true
 
+# Nushell için ayarlar
+export XDG_CONFIG_HOME="${HOME}/.config"
+
 # eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # If you come from bash you might have to change your $PATH.
