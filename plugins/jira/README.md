@@ -60,6 +60,20 @@ function jira_branch() {
 }
 ```
 
+```zsh
+# Determine branch name from naming convention 'type/KEY-123/description'.
+function jira_branch() {
+  # Get name of the branch
+  issue_arg=$(git rev-parse --abbrev-ref HEAD)
+  # Strip prefixes like feature/ or bugfix/
+  issue_arg=${issue_arg#*/}
+  # Strip suffixes like /some-branch-description
+  issue_arg=${issue_arg%%/*}
+  # Return the value
+  echo $issue_arg
+}
+```
+
 #### Debugging usage
 
 These calling forms are for developers' use, and may change at any time.
