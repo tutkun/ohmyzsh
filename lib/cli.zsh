@@ -823,6 +823,13 @@ function _omz::update {
     return 1
   }
 
+  # Check if --unattended was passed
+  [[ "$1" != --unattended ]] || {
+    _omz::log error "the \`\e[2m--unattended\e[0m\` flag is no longer supported, use the \`\e[2mupgrade.sh\e[0m\` script instead."
+    _omz::log error "for more information see https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#how-do-i-update-oh-my-zsh"
+    return 1
+  }
+
   local last_commit=$(builtin cd -q "$ZSH"; git rev-parse HEAD 2>/dev/null)
   [[ $? -eq 0 ]] || {
     _omz::log error "\`$ZSH\` is not a git directory. Aborting..."
