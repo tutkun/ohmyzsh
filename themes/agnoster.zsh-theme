@@ -54,7 +54,7 @@ esac
 : ${AGNOSTER_DIR_BG:=blue}
 
 # user@host
-: ${AGNOSTER_CONTEXT_FG:=${CURRENT_DEFAULT_FG}}
+: ${AGNOSTER_CONTEXT_FG:=default}
 : ${AGNOSTER_CONTEXT_BG:=black}
 
 # Git related
@@ -91,7 +91,6 @@ esac
 : ${AGNOSTER_STATUS_RETVAL_FG:=red}
 : ${AGNOSTER_STATUS_ROOT_FG:=yellow}
 : ${AGNOSTER_STATUS_JOB_FG:=cyan}
-: ${AGNOSTER_STATUS_FG:=${CURRENT_DEFAULT_FG}}
 : ${AGNOSTER_STATUS_BG:=black}
 
 ## Non-Color settings - set to 'true' to enable
@@ -202,15 +201,17 @@ prompt_git() {
       prompt_segment "$AGNOSTER_GIT_CLEAN_BG" "$AGNOSTER_GIT_CLEAN_FG"
     fi
 
-    local ahead behind
-    ahead=$(command git log --oneline @{upstream}.. 2>/dev/null)
-    behind=$(command git log --oneline ..@{upstream} 2>/dev/null)
-    if [[ -n "$ahead" ]] && [[ -n "$behind" ]]; then
-      PL_BRANCH_CHAR=$'\u21c5'
-    elif [[ -n "$ahead" ]]; then
-      PL_BRANCH_CHAR=$'\u21b1'
-    elif [[ -n "$behind" ]]; then
-      PL_BRANCH_CHAR=$'\u21b0'
+    if [[ $AGNOSTER_GIT_BRANCH_STATUS == 'true' ]]; then
+      local ahead behind
+      ahead=$(command git log --oneline @{upstream}.. 2>/dev/null)
+      behind=$(command git log --oneline ..@{upstream} 2>/dev/null)
+      if [[ -n "$ahead" ]] && [[ -n "$behind" ]]; then
+        PL_BRANCH_CHAR=$'\u21c5'
+      elif [[ -n "$ahead" ]]; then
+        PL_BRANCH_CHAR=$'\u21b1'
+      elif [[ -n "$behind" ]]; then
+        PL_BRANCH_CHAR=$'\u21b0'
+      fi
     fi
 
     if [[ -e "${repo_path}/BISECT_LOG" ]]; then
@@ -287,10 +288,10 @@ prompt_hg() {
       rev=$(command hg id -n 2>/dev/null | sed 's/[^-0-9]//g')
       branch=$(command hg id -b 2>/dev/null)
       if command hg st | command grep -q "^\?"; then
-        prompt_segment red black
+        prompt_segment "$AGNOSTER_HG_NEWFILE_BG" "$AGNOSTER_HG_NEWFILE_FG"
         st='±'
       elif command hg st | command grep -q "^[MA]"; then
-        prompt_segment yellow black
+        prompt_segment "$AGNOSTER_HG_CHANGED_BG" "$AGNOSTER_HG_CHANGED_FG"
         st='±'
       else
         prompt_segment "$AGNOSTER_HG_CLEAN_BG" "$AGNOSTER_HG_CLEAN_FG"
@@ -332,7 +333,7 @@ prompt_status() {
   [[ $UID -eq 0 ]] && symbols+="%{%F{$AGNOSTER_STATUS_ROOT_FG}%}⚡"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{$AGNOSTER_STATUS_JOB_FG}%}⚙"
 
-  [[ -n "$symbols" ]] && prompt_segment "$AGNOSTER_STATUS_BG" "$AGNOSTER_STATUS_FG" "$symbols"
+  [[ -n "$symbols" ]] && prompt_segment "$AGNOSTER_STATUS_BG" default "$symbols"
 }
 
 #AWS Profile:
