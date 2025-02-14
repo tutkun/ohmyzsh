@@ -54,7 +54,7 @@ esac
 : ${AGNOSTER_DIR_BG:=blue}
 
 # user@host
-: ${AGNOSTER_CONTEXT_FG:=default}
+: ${AGNOSTER_CONTEXT_FG:=white}
 : ${AGNOSTER_CONTEXT_BG:=black}
 
 # Git related
@@ -91,6 +91,7 @@ esac
 : ${AGNOSTER_STATUS_RETVAL_FG:=red}
 : ${AGNOSTER_STATUS_ROOT_FG:=yellow}
 : ${AGNOSTER_STATUS_JOB_FG:=cyan}
+: ${AGNOSTER_STATUS_FG:=white}
 : ${AGNOSTER_STATUS_BG:=black}
 
 ## Non-Color settings - set to 'true' to enable
@@ -333,7 +334,7 @@ prompt_status() {
   [[ $UID -eq 0 ]] && symbols+="%{%F{$AGNOSTER_STATUS_ROOT_FG}%}⚡"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{$AGNOSTER_STATUS_JOB_FG}%}⚙"
 
-  [[ -n "$symbols" ]] && prompt_segment "$AGNOSTER_STATUS_BG" default "$symbols"
+  [[ -n "$symbols" ]] && prompt_segment "$AGNOSTER_STATUS_BG" "$AGNOSTER_STATUS_FG" "$symbols"
 }
 
 #AWS Profile:
