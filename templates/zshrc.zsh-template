@@ -2,7 +2,7 @@
 DOTNET_CLI_TELEMETRY_OPTOUT=true
 
 # Nushell için ayarlar
-export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CONFIG_HOME=${HOME}/.config
 
 # eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -177,6 +177,9 @@ export PATH=$PATH:$VSCODE_EDITOR
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 
+# flutter create --org com.newcompany --project-name newproject .
+# alias flutter-create-project="flutter create --org=com.tutkuns.apps --platforms='ios,android' --template=app -e --project-name "
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -200,6 +203,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
