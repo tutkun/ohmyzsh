@@ -163,6 +163,9 @@ export VSCODE_EDITOR=/Applications/Code.app/Contents/Resources/app/bin
 export REACT_EDITOR="code"
 export PATH=$PATH:$VSCODE_EDITOR
 
+# Podman Configurations
+export CONTAINERS_MACHINE_PROVIDER=libkrun
+
 
 # ==============================================================================
 # HELPER FUNCTIONS:
