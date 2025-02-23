@@ -159,11 +159,6 @@ export VSCODE_EDITOR=/Applications/Code.app/Contents/Resources/app/bin
 export REACT_EDITOR="code"
 export PATH=$PATH:$VSCODE_EDITOR
 
-# Bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-
-
 # ==============================================================================
 # HELPER FUNCTIONS:
 # ==============================================================================
