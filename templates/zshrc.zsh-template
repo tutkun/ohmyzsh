@@ -165,6 +165,7 @@ export PATH=$PATH:$VSCODE_EDITOR
 
 # Podman Configurations
 export CONTAINERS_MACHINE_PROVIDER=libkrun
+export DOCKER_HOST='unix:///var/folders/tm/7lc4znp51691flv3m9fr3j640000gn/T/podman/podman-machine-default-api.sock'
 
 
 # ==============================================================================
