@@ -11,7 +11,7 @@ if [[ ! -f "$ZSH_CACHE_DIR/completions/_jj" ]]; then
   _comps[jj]=_jj
 fi
 
-COMPLETE=zsh jj >| "$ZSH_CACHE_DIR/completions/_jj" &|
+jj util completion zsh >| "$ZSH_CACHE_DIR/completions/_jj" &|
 
 function __jj_prompt_jj() {
   local -a flags
@@ -42,7 +42,6 @@ alias jjds='jj desc'
 alias jje='jj edit'
 alias jjgcl='jj git clone'
 alias jjgf='jj git fetch'
-alias jjgfa='jj git fetch --all-remotes'
 alias jjgp='jj git push'
 alias jjl='jj log'
 alias jjla='jj log -r "all()"'
