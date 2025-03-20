@@ -8,6 +8,7 @@ jira                            Performs the default action
 jira new                        Opens a new Jira issue dialogue
 jira ABC-123                    Opens an existing issue
 jira ABC-123 m                  Opens an existing issue for adding a comment
+jira project ABC                Opens JIRA project summary
 jira dashboard [rapid_view]     Opens your JIRA dashboard
 jira mine                       Queries for your own issues
 jira tempo                      Opens your JIRA Tempo
