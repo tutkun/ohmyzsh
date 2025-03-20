@@ -15,6 +15,8 @@ fi
 : ${ZSH_TMUX_AUTOQUIT:=$ZSH_TMUX_AUTOSTART}
 # Automatically name the new session based on the basename of PWD
 : ${ZSH_TMUX_AUTONAME_SESSION:=false}
+# Automatically pick up tmux environments
+: ${ZSH_TMUX_AUTOREFRESH:=true}
 # Set term to screen or screen-256color based on current terminal support
 : ${ZSH_TMUX_DETACHED:=false}
 # Set detached mode
