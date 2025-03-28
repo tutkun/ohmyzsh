@@ -128,6 +128,10 @@ export PATH=$(pyenv root)/shims:$PATH
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+# Bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+export PATH="$HOME/.bun/bin:$PATH"
+
 #! Gelistiricilere ozel kutuphane SdkMan!
 # Java versiyonu ayarlama komutu: "sdk home java 17.0.10-jbr"
 # Java versiyonlarini listeleme: "sdk list"
