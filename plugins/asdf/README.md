@@ -1,4 +1,4 @@
-## asdf
+# asdf
 
 Adds integration with [asdf](https://github.com/asdf-vm/asdf), the extendable version manager, with support for Ruby, Node.js, Elixir, Erlang and more.
 
@@ -19,27 +19,21 @@ Example for installing the nodejs plugin and the many runtimes for it:
 
 ```sh
 # Add plugin to asdf
-asdf plugin add nodejs
+asdf plugin add nodejs 
 
-# Install the latest available version
+# Install the latest available nodejs runtime version
 asdf install nodejs latest
 
-# Uninstall the latest version
-asdf uninstall nodejs latest
-
-# Install a specific version
+# Install nodejs v16.5.0 runtime version
 asdf install nodejs 16.5.0
 
-# Set the latest version in .tool-versions of the `current directory`
+# Set the latest version in .tools-version in the current working directory
 asdf set nodejs latest
 
-# Set a specific version in the `parent directory`
-asdf set -p nodejs 16.5.0   # -p is shorthand for --parent
-
-# Set a global version under `$HOME`
-asdf set -u nodejs 16.5.0   # -u is shorthand for --home
+# Set a version globally that will apply to all directories under $HOME
+asdf set -u nodejs 16.5.0
 ```
 
-### Maintainer
+## Maintainer
 
 - [@RobLoach](https://github.com/RobLoach)
