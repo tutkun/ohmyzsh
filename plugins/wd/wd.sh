@@ -8,7 +8,7 @@
 # @github.com/mfaerevaag/wd
 
 # version
-readonly WD_VERSION=0.9.3
+readonly WD_VERSION=0.10.0
 
 # colors
 readonly WD_BLUE="\033[96m"
@@ -86,6 +86,7 @@ Commands:
     show                 Print warp points to current directory
     list                 Print all stored warp points
     ls  <point>          Show files from given warp point (ls)
+    open <point>         Open the warp point in the default file explorer (open / xdg-open)
     path <point>         Show the path to given warp point (pwd)
     clean                Remove points warping to nonexistent directories (will prompt unless --force is used)
 
