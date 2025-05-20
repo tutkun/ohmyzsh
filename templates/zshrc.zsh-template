@@ -116,6 +116,9 @@ source $ZSH/oh-my-zsh.sh
 # USER CONFIGURATIONS:
 # ==============================================================================
 
+# Terminal'deki Güzel Tema:
+eval "$(starship init zsh)"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Brew intell mac için:
@@ -124,8 +127,7 @@ source $ZSH/oh-my-zsh.sh
 # Python pyenv shims:
 export PATH=$(pyenv root)/shims:$PATH
 
-# Bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+# Bun using
 export PATH="$HOME/.bun/bin:$PATH"
 
 # Pnpm
