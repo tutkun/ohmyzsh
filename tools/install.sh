@@ -166,11 +166,16 @@ supports_hyperlinks() {
 
   # If $TERM_PROGRAM is set, these terminals support hyperlinks
   case "$TERM_PROGRAM" in
-  Hyper|iTerm.app|terminology|WezTerm) return 0 ;;
+  Hyper|iTerm.app|terminology|WezTerm|vscode) return 0 ;;
   esac
 
-  # kitty supports hyperlinks
-  if [ "$TERM" = xterm-kitty ]; then
+  # These termcap entries support hyperlinks
+  case "$TERM" in
+  xterm-kitty|alacritty|alacritty-direct) return 0 ;;
+  esac
+
+  # xfce4-terminal supports hyperlinks
+  if [ "$COLORTERM" = "xfce4-terminal" ]; then
     return 0
   fi
 
@@ -405,8 +410,8 @@ EOF
     "$FMT_YELLOW" "$FMT_RESET"
   read -r opt
   case $opt in
-    y*|Y*|"") ;;
-    n*|N*) echo "Shell değişikliği atlandı."; return ;;
+    [Yy]*|"") ;;
+    [Nn]*) echo "Shell değişikliği atlandı."; return ;;
     *) echo "Hatalı seçim. Shell değişikliği atlandı."; return ;;
   esac
 
@@ -489,9 +494,8 @@ print_success() {
     "$(fmt_code "$(fmt_link ".zshrc" "file://$zdot/.zshrc" --text)")" \
     "dosyasını inceleyerek eklentileri, temaları ve seçenekleri seçin."
   printf '\n'
-  printf '%s\n' "• X'de bizi takip et: $(fmt_link @ohmyzsh https://twitter.com/ohmyzsh)"
+  printf '%s\n' "• X'de bizi takip et: $(fmt_link @ohmyzsh https://x.com/ohmyzsh)"
   printf '%s\n' "• Discord'a katıl: $(fmt_link "Discord server" https://discord.gg/ohmyzsh)"
-  printf '%s\n' "• Çıkartmalar, tişörtler, kahve kupaları ve daha fazlası: $(fmt_link "Planet Argon Mağazası" https://shop.planetargon.com/collections/oh-my-zsh)"
   printf '%s\n' $FMT_RESET
 }
 
