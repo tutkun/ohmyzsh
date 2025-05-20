@@ -15,7 +15,7 @@ plugins=(... extract)
 ## Supported file extensions
 
 | Extension         | Description                             |
-| :---------------- | :-------------------------------------- |
+|:------------------|:----------------------------------------|
 | `7z`              | 7zip file                               |
 | `apk`             | Android app file                        |
 | `aar`             | Android library file                    |

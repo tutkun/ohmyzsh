@@ -12,7 +12,7 @@ plugins=(... kubectl)
 ## Aliases
 
 | Alias    | Command                                                 | Description                                                                                      |
-| :------- | :------------------------------------------------------ | :----------------------------------------------------------------------------------------------- |
+|:---------|:--------------------------------------------------------|:-------------------------------------------------------------------------------------------------|
 | k        | `kubectl`                                               | The kubectl command                                                                              |
 | kca      | `kubectl --all-namespaces`                              | The kubectl command targeting all namespaces                                                     |
 | kaf      | `kubectl apply -f`                                      | Apply a YML file                                                                                 |
@@ -27,7 +27,7 @@ plugins=(... kubectl)
 | kdel     | `kubectl delete`                                        | Delete resources by filenames, stdin, resources and names, or by resources and label selector    |
 | kdelf    | `kubectl delete -f`                                     | Delete a pod using the type and name specified in -f argument                                    |
 | kge      | `kubectl get events --sort-by=".lastTimestamp"`         | Get events (sorted by timestamp)                                                                 |
-| kgew     | `kubectl get events --watch --sort-by=".lastTimestamp"` | Get events and watch as they occur (sorted by timestamp)                                                                 |
+| kgew     | `kubectl get events --watch --sort-by=".lastTimestamp"` | Get events and watch as they occur (sorted by timestamp)                                         |
 |          |                                                         | **Pod management**                                                                               |
 | kgp      | `kubectl get pods`                                      | List all pods in ps output format                                                                |
 | kgpl     | `kgp -l`                                                | Get pods by label. Example: `kgpl "app=myapp" -n myns`                                           |
