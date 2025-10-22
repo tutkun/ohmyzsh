@@ -190,3 +190,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+PATH=~/.console-ninja/.bin:$PATH
+# bun completions
+[ -s "/Users/tutkun/.bun/_bun" ] && source "/Users/tutkun/.bun/_bun"
