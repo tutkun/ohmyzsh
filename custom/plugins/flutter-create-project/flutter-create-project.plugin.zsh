@@ -1,5 +1,12 @@
+
+# Flutter SDK Yolunu Belirtiyoruz:
+export PATH="$PATH:$HOME/flutter-sdk/bin:$HOME/.pub-cache/bin"
+
+# flutter create --org com.newcompany --project-name newproject .
+alias flutter-new-app="flutter create --org com.tutkuns --project-name "
+
 # Kullanıcıdan proje oluştururken template ve platform seçmesini isteyen bir fonksiyon
-flutter-create-project(){
+flutter-create-project() {
   # Kullanıcıdan template seçimi alınır
   echo "\033[33mLütfen --template parametresi için bir seçim yapın:\033[0m"
   echo "\033[32m   [app]\033[0m - (varsayılan) Bir Flutter uygulaması oluşturun."
