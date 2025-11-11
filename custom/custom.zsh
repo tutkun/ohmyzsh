@@ -30,6 +30,9 @@ DOTNET_CLI_TELEMETRY_OPTOUT=1
 export LANG=tr_TR.UTF-8
 export LC_ALL=tr_TR.UTF-8
 
+# Rust için cargo yapılandırması
+source "$HOME/.cargo/env"
+
 # docker'da ollama kullanımı
 alias ollama="docker exec -it ollama ollama"
 
