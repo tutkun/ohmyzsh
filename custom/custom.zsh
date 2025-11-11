@@ -14,17 +14,8 @@
 # Android Studio için JAVA_HME tanımlaması:
 # export JAVA_HOME="/usr/libexec/java_home"
 
-# ASFD Eklentisi için Hombrew ile kuruldu
-source /usr/local/opt/asdf/libexec/asdf.sh
-
-# Python3
-export PATH="$PATH:$HOME/Library/Python/3.8/bin"
-
 # Flutter SDK Yolunu Belirtiyoruz:
 export PATH="$PATH:$HOME/flutter-sdk/bin:$HOME/.pub-cache/bin"
-
-# brew node@16
-export PATH="$PATH:/usr/local/opt/node@16/bin"
 
 # Visual Studio Code (code)
 export PATH="$PATH:/Applications/Code.app/Contents/Resources/app/bin"

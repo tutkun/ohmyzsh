@@ -15,21 +15,21 @@ create-nextjs-app () {
         # npx create-next-app $PROJECT_DIR --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"
         git clone https://github.com/tutkun/nextjs-webapp-template $PROJECT_DIR
         rm -rf $PROJECT_DIR/.git/
-        
+
         # projenin kurulacağı dizine geç
         cd $PROJECT_DIR
         echo "$(PROJECT_DIR) dizinine geçiş yapıldı..."
-        
+
         # git ile projeye dosyaları ekle
         git init
         git add .
-        git commit -m "Uzay yolculuğu başladı... 🚀"
+        git commit -m "core(init): Mekik fırlatılıyor... 🚀"
         git branch -M master
         git remote add origin https://github.com/tutkun/$1.git
         git push -u origin master
 
         # bir önceki dizine geri dön
-        echo "Bir önceki dizin olan \"$(-)\" dizine geçiş yapılıyor..."
+        echo "Bir önceki dizin olan \"\e[31m$(-)\e[m\" dizinine geçiş yapılıyor..."
         cd -
     fi;
 }
