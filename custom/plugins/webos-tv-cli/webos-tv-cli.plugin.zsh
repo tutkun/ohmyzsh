@@ -1,6 +1,11 @@
 # Add your own custom plugins in the custom/plugins directory. Plugins placed
 # here will override ones with the same name in the main plugins directory.
 
+# .bash_profile:
+# export LG_WEBOS_STUDIO_SDK_HOME="/Users/tutkun/Developer/webOS_TV_SDK"
+# export LG_WEBOS_TV_SDK_HOME="/Users/tutkun/Developer/webOS_TV_SDK/TV"
+# export WEBOS_CLI_TV="/Users/tutkun/.nvm/versions/node/v22.18.0/bin"
+
 # webOS TV için SDK yapılandırmaları
 export LG_WEBOS_TV_SDK_HOME="$HOME/Developer/webOS_TV_SDK"
 
