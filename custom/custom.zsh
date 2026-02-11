@@ -130,6 +130,11 @@ export PATH=$PATH:$FLUTTER_ROOT/bin:$HOME/.pub-cache/bin
 # Flutter için Chrome Browser yerine Brave Browser kullanmak istiyoruz:
 export CHROME_EXECUTABLE=/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
 
+# Samsung/Tizen Geliştirme Aracı (Smart Development Bridge) için iterm otomatik tamamlama
+if [ -f ~/.sdb/.sdb-completion.bash ]; then
+  source ~/.sdb/.sdb-completion.bash
+fi
+
 # Visual Studio Code (code)
 export VSCODE_EDITOR=/Applications/Code.app/Contents/Resources/app/bin
 export REACT_EDITOR="code"
