@@ -1,7 +1,7 @@
 # ============================================
-# Pardus via Docker
+# Debian via Docker
 #
-# pardus-in-docker.plugin.zsh
+# debian-in-docker.plugin.zsh
 # ============================================
 
 # core plugin yüklü mü kontrol et
@@ -10,6 +10,6 @@ if ! typeset -f _run_in_docker >/dev/null; then
   return 1
 fi
 
-pardus() {
-  _run_in_docker pardus "$@"
+debian() {
+  _run_in_docker debian "$@"
 }
