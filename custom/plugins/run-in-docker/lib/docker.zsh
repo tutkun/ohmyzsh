@@ -24,7 +24,7 @@ _rid_get_image() {
     python) echo "python:latest" ;;
     go) echo "golang:latest" ;;
     php) echo "php:8.3-cli" ;;
-    *) echo "pardus/yirmibes" ;;
+    *) echo "pardus/yirmibes:latest" ;;
   esac
 }
 
