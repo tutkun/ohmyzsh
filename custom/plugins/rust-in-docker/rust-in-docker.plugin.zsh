@@ -9,13 +9,13 @@ cargo() {
   local root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
   docker run --rm -it \
+    -w "/app/${PWD#$root/}" \
     -v "$root:/app" \
     \
     -v $(basename $root)-cargo-cache:/usr/local/cargo/registry \
     -v $(basename $root)-cargo-git-cache:/usr/local/cargo/git \
     -v $(basename $root)-target-cache:/app/target \
     \
-    -w "/app/${PWD#$root/}" \
     rust:latest cargo "$@"
 }
 
@@ -27,13 +27,13 @@ rustc() {
   local root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
   docker run --rm -it \
+    -w "/app/${PWD#$root/}" \
     -v "$root:/app" \
     \
     -v $(basename $root)-cargo-cache:/usr/local/cargo/registry \
     -v $(basename $root)-cargo-git-cache:/usr/local/cargo/git \
     -v $(basename $root)-target-cache:/app/target \
     \
-    -w "/app/${PWD#$root/}" \
     rust:latest rustc "$@"
 }
 
@@ -45,13 +45,13 @@ rustup() {
   local root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
   docker run --rm -it \
+    -w "/app/${PWD#$root/}" \
     -v "$root:/app" \
     \
     -v $(basename $root)-cargo-cache:/usr/local/cargo/registry \
     -v $(basename $root)-cargo-git-cache:/usr/local/cargo/git \
     -v $(basename $root)-target-cache:/app/target \
     \
-    -w "/app/${PWD#$root/}" \
     rust:latest rustup "$@"
 }
 
@@ -63,12 +63,12 @@ rust-doc() {
   local root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
   docker run --rm -it \
+    -w "/app/${PWD#$root/}" \
     -v "$root:/app" \
     \
     -v $(basename $root)-cargo-cache:/usr/local/cargo/registry \
     -v $(basename $root)-cargo-git-cache:/usr/local/cargo/git \
     -v $(basename $root)-target-cache:/app/target \
     \
-    -w "/app/${PWD#$root/}" \
     rust:latest rust-doc "$@"
 }
