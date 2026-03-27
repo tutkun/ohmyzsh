@@ -8,9 +8,14 @@ cargo() {
   # Projenin root path'ini git ile bul ya da pwd kullan:
   local root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
+  # relative path üret:
+  local rel="${PWD#$root}"
+  # baştaki / işaretini kaldır ki proje dizinine relative yol tekrar eklenmesin
+  rel="${rel#/}"
+
   docker run --rm -it \
     -v "$root:/app" \
-    -w "/app/${PWD#$root/}" \
+    -w "/app/$rel" \
     \
     -v $(basename $root)-cargo-cache:/usr/local/cargo/registry \
     -v $(basename $root)-cargo-git-cache:/usr/local/cargo/git \
@@ -49,9 +54,14 @@ rustup() {
   # Projenin root path'ini git ile bul ya da pwd kullan:
   local root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
+  # relative path üret:
+  local rel="${PWD#$root}"
+  # baştaki / işaretini kaldır ki proje dizinine relative yol tekrar eklenmesin
+  rel="${rel#/}"
+
   docker run --rm -it \
     -v "$root:/app" \
-    -w "/app/${PWD#$root/}" \
+    -w "/app/$rel" \
     \
     -v $(basename $root)-cargo-cache:/usr/local/cargo/registry \
     -v $(basename $root)-cargo-git-cache:/usr/local/cargo/git \
@@ -67,9 +77,14 @@ rust-doc() {
   # Projenin root path'ini git ile bul ya da pwd kullan:
   local root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
+  # relative path üret:
+  local rel="${PWD#$root}"
+  # baştaki / işaretini kaldır ki proje dizinine relative yol tekrar eklenmesin
+  rel="${rel#/}"
+
   docker run --rm -it \
-    -w "/app/${PWD#$root/}" \
     -v "$root:/app" \
+    -w "/app/$rel" \
     \
     -v $(basename $root)-cargo-cache:/usr/local/cargo/registry \
     -v $(basename $root)-cargo-git-cache:/usr/local/cargo/git \
