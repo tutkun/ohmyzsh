@@ -2,8 +2,9 @@
 DOTNET_CLI_TELEMETRY_OPTOUT=true
 
 # You may need to manually set your language environment
-export LANG=tr_TR.UTF-8
-export LC_ALL=tr_TR.UTF-8
+export LANG="tr_TR.UTF-8"
+export LC_ALL="tr_TR.UTF-8"
+export LC_MESSAGES="tr_TR.UTF-8"
 
 # eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -58,7 +59,7 @@ zstyle ':omz:update' mode reminder    # zamanı geldiğinde güncellemek için s
 
 # Otomatik tamamlama beklenirken görülecek:
 # COMPLETION_WAITING_DOTS="true"
-COMPLETION_WAITING_DOTS="%F{yellow} biraz bekleyin...%f"
+COMPLETION_WAITING_DOTS="%F{yellow} yükleniyor...%f"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
