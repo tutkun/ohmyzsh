@@ -9,8 +9,8 @@ cargo() {
   local root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
   docker run --rm -it \
-    -w "/app/${PWD#$root/}" \
     -v "$root:/app" \
+    -w "/app/${PWD#$root/}" \
     \
     -v $(basename $root)-cargo-cache:/usr/local/cargo/registry \
     -v $(basename $root)-cargo-git-cache:/usr/local/cargo/git \
@@ -26,9 +26,14 @@ rustc() {
   # Projenin root path'ini git ile bul ya da pwd kullan:
   local root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
+  # relative path üret:
+  local rel="${PWD#$root}"
+  # baştaki / işaretini kaldır ki proje dizinine relative yol tekrar eklenmesin
+  rel="${rel#/}"
+
   docker run --rm -it \
-    -w "/app/${PWD#$root/}" \
     -v "$root:/app" \
+    -w "/app/$rel" \
     \
     -v $(basename $root)-cargo-cache:/usr/local/cargo/registry \
     -v $(basename $root)-cargo-git-cache:/usr/local/cargo/git \
@@ -45,8 +50,8 @@ rustup() {
   local root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
   docker run --rm -it \
-    -w "/app/${PWD#$root/}" \
     -v "$root:/app" \
+    -w "/app/${PWD#$root/}" \
     \
     -v $(basename $root)-cargo-cache:/usr/local/cargo/registry \
     -v $(basename $root)-cargo-git-cache:/usr/local/cargo/git \
