@@ -15,7 +15,7 @@ node() {
 }
 
 bun() {
-  _run_in_docker node bun "$@"
+  _run_in_docker bun "$@"
 }
 
 npm() {
