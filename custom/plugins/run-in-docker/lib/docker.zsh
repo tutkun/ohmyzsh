@@ -21,6 +21,7 @@ _rid_get_image() {
   case "$lang" in
     rust) echo "rust:latest" ;;
     node) echo "node:lts" ;;
+    bun) echo "oven/bun:latest" ;;
     python) echo "python:latest" ;;
     go) echo "golang:latest" ;;
     php) echo "php:8.3-cli" ;;
@@ -46,8 +47,8 @@ _run_in_docker() {
   fi
 
   docker run --rm -it \
-    -v "$root:/workspace" \
-    -w "/workspace/$rel" \
+    -v "$root:/ohmyzsh-workspace" \
+    -w "/ohmyzsh-workspace/$rel" \
     \
     -v "${name}-${lang}-cache:/root/.cache" \
     \
