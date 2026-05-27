@@ -6,11 +6,13 @@ export LANG="tr_TR.UTF-8"
 export LC_ALL="tr_TR.UTF-8"
 export LC_MESSAGES="tr_TR.UTF-8"
 
-# eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$PATH:/usr/local/bin:$HOME/bin:$HOME/.local/bin
-export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH:$HOME/bin:/usr/local/bin
+export PATH=$PATH:$HOME/local/bin:$HOME/bin:$HOME/.local/bin
+
+# MacPorts app:
+export PATH="/opt/local/bin:$PATH";
+typeset -U PATH;
 
 # Bu Proje kurulum dizinidir!
 #! Bunu ~/.zshrc içerisinde ayarlanmalısın!
@@ -95,14 +97,6 @@ HIST_STAMPS="mm/dd/yyyy"
 #! USER CONFIGURATIONS:
 # ============================================================
 
-# Terminal'deki Güzel Tema:
-eval "$(starship init zsh)"
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# Python pyenv shims:
-export PATH=$(pyenv root)/shims:$PATH
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -110,6 +104,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # Bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 export PATH="$HOME/.bun/bin:$PATH"
+
+typeset -U PATH
 
 #! Gelistiricilere ozel kutuphane SdkMan!
 # Java versiyonu ayarlama komutu: "sdk home java 17.0.10-jbr"
@@ -120,13 +116,19 @@ export JAVA_HOME=$HOME/.sdkman/candidates/java/current
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$ANDROID_HOME/cmdline-tools/latest/bin
 
+typeset -U PATH
+
 # Flutter ve Ruby için gem home ve path tanımlaması:
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/ruby/3.3.0/bin:$PATH
 
+typeset -U PATH
+
 # Flutter SDK Yolunu Belirtiyoruz:
 export FLUTTER_ROOT=$HOME/Developer/flutter-sdk
 export PATH=$PATH:$FLUTTER_ROOT/bin:$HOME/.pub-cache/bin
+
+typeset -U PATH
 
 # Flutter için Chrome Browser yerine Brave Browser kullanmak istiyoruz:
 export CHROME_EXECUTABLE=/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
@@ -141,6 +143,8 @@ export VSCODE_EDITOR=/Applications/Code.app/Contents/Resources/app/bin
 export REACT_EDITOR="code"
 export PATH=$PATH:$VSCODE_EDITOR
 
+typeset -U PATH
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -149,6 +153,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 PATH=~/.console-ninja/.bin:$PATH
+
+typeset -U PATH
 
 # ========================================================
 #! HELPER FUNCTIONS:
@@ -173,6 +179,7 @@ else
     . "$HOME/miniconda3/etc/profile.d/conda.sh"
   else
     export PATH="$HOME/miniconda3/bin:$PATH"
+    typeset -U PATH
   fi
 fi
 unset __conda_setup
@@ -181,5 +188,45 @@ unset __conda_setup
 # Bun using
 export PATH="$HOME/.bun/bin:$PATH"
 
+typeset -U PATH
+
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# Rust için LLVM yolları:
+# export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix llvm)/lib"
+# export LIBCLANG_PATH="$(brew --prefix llvm)/lib"
+
+# MacPorts için path:
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+
+typeset -U PATH
+
+
+function ollama() {
+
+  if [ -z "$1" ]; then
+    echo "Usage: ollama setup, ollama ...";
+    return 1;
+  fi
+
+  if [ "$1" = "setup" ]; then
+    docker exec -it \
+      -e ANTHROPIC_BASE_URL=http://ollama:11434 \
+      -e ANTHROPIC_AUTH_TOKEN=ollama \
+      -e ANTHROPIC_API_KEY="" \
+      ollama $@; # setup buraya gelir
+  else
+    docker exec -it \
+      -e ANTHROPIC_BASE_URL=http://ollama:11434 \
+      -e ANTHROPIC_AUTH_TOKEN=ollama \
+      -e ANTHROPIC_API_KEY="" \
+      ollama ollama $@; # setup olmadan ollama çalışır
+  fi
+}
+
+function claude() {
+  # ollama launch claude --model gemma4:e2b-it-q4_K_M;
+  ollama launch claude --model qwen3.5:4b-q4_K_M;
+  # ollama launch claude --model qwen2.5-coder:7b;
+}
