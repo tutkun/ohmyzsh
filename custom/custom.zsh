@@ -202,7 +202,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 typeset -U PATH
 
-
 function ollama() {
 
   if [ -z "$1" ]; then
@@ -223,10 +222,4 @@ function ollama() {
       -e ANTHROPIC_API_KEY="" \
       ollama ollama $@; # setup olmadan ollama çalışır
   fi
-}
-
-function claude() {
-  # ollama launch claude --model gemma4:e2b-it-q4_K_M;
-  ollama launch claude --model qwen3.5:4b-q4_K_M;
-  # ollama launch claude --model qwen2.5-coder:7b;
 }
